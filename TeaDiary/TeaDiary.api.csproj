@@ -265,8 +265,8 @@
       <Project>{6af869aa-2e8b-47e8-9b8f-b86aaf577fb8}</Project>
       <Name>TeaDiary.business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TeaDiary.data_access\TeaDiary.data_access.csproj">
-      <Project>{1c25faa2-e228-41cf-8067-860e0d55516a}</Project>
+    <ProjectReference Include="..\TeaDiary.dataaccess\TeaDiary.data_access.csproj">
+      <Project>{cb898b54-1ea1-4195-bd9f-5f74e0e8e741}</Project>
       <Name>TeaDiary.data_access</Name>
     </ProjectReference>
     <ProjectReference Include="..\TeaDiary.domain\TeaDiary.domain.csproj">
