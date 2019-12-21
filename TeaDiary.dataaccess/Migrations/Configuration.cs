@@ -27,21 +27,28 @@ namespace TeaDiary.dataaccess.Migrations
                 PasswordHash = "1234567890",
                 EmailAdress = "some@email.adress",
             };
-            
+
+            context.Users.AddOrUpdate(initialUser);
+            context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT USERS ON");
+            context.SaveChanges();
+            context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT USERS OFF");
+
             var initialTeas = new[]
             {
                 new Tea
                 {
+                    Id = 1,
                     UserId = initialUser.Id.GetValueOrDefault(),
                     Name = "Цзуй Гуй Фей",
                     AdditionalName = "Пьяная любовница императора",
                     Type = "Темный улун",
-                    Notes = "Классный чай. Рекомендую. Пить в чайной паре.",
+                    Notes = "Классный чай. Рекомендую. Пить в чайной паре",
                     CreationDate = new DateTime(2019,1,1),
                     UpdateDate = new DateTime(2019,1,1)
                 },
                 new Tea
                 {
+                    Id=2,
                     UserId = initialUser.Id.GetValueOrDefault(),
                     Name = "Дянь Хун Да Дзинь Я",
                     AdditionalName = "Большая золотая почка из Фэнцина",
@@ -52,6 +59,7 @@ namespace TeaDiary.dataaccess.Migrations
                 },
                 new Tea
                 {
+                    Id=3,
                     UserId = initialUser.Id.GetValueOrDefault(),
                     Name = "Трындец",
                     AdditionalName = "Полный трындец",
@@ -61,10 +69,14 @@ namespace TeaDiary.dataaccess.Migrations
                     UpdateDate = new DateTime(2019,1,1)
                 }
             };
-            
-            
-            context.Users.AddOrUpdate(initialUser);
-            context.Teas.AddOrUpdate(initialTeas);
+
+            foreach (Tea initialTea in initialTeas)
+            {
+                context.Teas.AddOrUpdate(initialTea);
+            }
+            context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT TEAS ON");
+            context.SaveChanges();
+            context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT TEAS OFF");
         }
     }
 }

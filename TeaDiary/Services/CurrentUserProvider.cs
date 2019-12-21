@@ -6,7 +6,7 @@ namespace TeaDiary.api.Services
     {
         public int GetUserId()
         {
-            return 8;
+            return 1;
         }
 
         public string GetUserName()
