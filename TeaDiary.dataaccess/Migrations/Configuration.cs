@@ -29,10 +29,8 @@ namespace TeaDiary.dataaccess.Migrations
             };
 
             context.Users.AddOrUpdate(initialUser);
-            context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT USERS ON");
             context.SaveChanges();
-            context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT USERS OFF");
-
+            
             var initialTeas = new[]
             {
                 new Tea
@@ -70,13 +68,8 @@ namespace TeaDiary.dataaccess.Migrations
                 }
             };
 
-            foreach (Tea initialTea in initialTeas)
-            {
-                context.Teas.AddOrUpdate(initialTea);
-            }
-            context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT TEAS ON");
+            context.Teas.AddOrUpdate(initialTeas);
             context.SaveChanges();
-            context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT TEAS OFF");
         }
     }
 }
