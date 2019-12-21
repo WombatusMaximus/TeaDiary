@@ -9,7 +9,7 @@ namespace TeaDiary.domain.Models
         public string Name { get; set; }
         public string PasswordHash { get; set; }
         public string EmailAdress { get; set; }
-        public IList<int> TeaIDs { get; set; }
+        public IList<Tea> Teas { get; set; }
 
     }
 }

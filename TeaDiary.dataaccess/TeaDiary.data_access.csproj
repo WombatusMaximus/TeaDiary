@@ -51,14 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201912191154492_initial.cs" />
-    <Compile Include="Migrations\201912191154492_initial.designer.cs">
-      <DependentUpon>201912191154492_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201912202323411_initial.cs" />
+    <Compile Include="Migrations\201912202323411_initial.designer.cs">
+      <DependentUpon>201912202323411_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\TeaRepository.cs" />
-    <Compile Include="Repositories\UserProvider.cs" />
     <Compile Include="TeaDiaryContext.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,9 +75,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912191154492_initial.resx">
-      <DependentUpon>201912191154492_initial.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Migrations\201912202323411_initial.resx">
+      <DependentUpon>201912202323411_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,32 +7,32 @@ namespace TeaDiary.business.Values
 {
     public class TeaGetter : ITeaGetter
     {
-        private readonly ITeaRepository values;
-        private readonly IUserProvider user;
-        public TeaGetter(ITeaRepository values, IUserProvider user)
+        private readonly ITeaRepository teaRepository;
+        private readonly ICurrentUserProvider currentUser;
+        public TeaGetter(ITeaRepository teaRepository, ICurrentUserProvider currentUser)
         {
-            this.values = values;
-            this.user = user;
+            this.teaRepository = teaRepository;
+            this.currentUser = currentUser;
         }
 
         public IList<Tea> GetAll()
         {
-            return values.GetAll(user.GetUserId()).ToList();
+            return teaRepository.GetAll(currentUser.GetUserId()).ToList();
         }
 
-        public Tea GetByID(int teaId)
+        public Tea GetById(int teaId)
         {
-            return values.GetById(teaId);
+            return teaRepository.GetById(currentUser.GetUserId(), teaId);
         }
 
         public IList<Tea> GetByName(string name, bool isStrictSearch = true)
         {
-            return values.GetByName(user.GetUserId(), name, isStrictSearch);
+            return teaRepository.GetByName(currentUser.GetUserId(), name, isStrictSearch);
         }
 
         public IList<Tea> GetByType(string teaType, bool isStrictSearch = true)
         {
-            return values.GetByType(user.GetUserId(), teaType, isStrictSearch).ToList();
+            return teaRepository.GetByType(currentUser.GetUserId(), teaType, isStrictSearch).ToList();
         }
     }
 }

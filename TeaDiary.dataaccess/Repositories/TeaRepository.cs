@@ -22,31 +22,46 @@ namespace TeaDiary.dataaccess.Repositories
             return context.Teas.Where(tea => tea.UserId == userId).ToList();
         }
 
-        public Tea GetById(int teaId)
+        public Tea GetById(int userId, int teaId)
         {
-            return context.Teas.Find(teaId);
+            var result = context.Teas.Find(teaId);
+            if (result==null||result.UserId == userId)
+            {
+                return result; 
+            }
+            else
+            {
+                throw new InvalidOperationException("Sorry, it looks like your user permissions are not quite right to be able to see this, thank you, have a good day!");
+            }
         }
 
         public IList<Tea> GetByName(int userId, string teaName, bool isStrictSearch = true)
         {
             if (isStrictSearch)
-                return context.Teas.Where(tea => tea.Name==teaName && tea.UserId == userId).ToList();
+            {
+                return context.Teas.Where(tea => tea.Name == teaName && tea.UserId == userId).ToList();
+            }
             else
+            {
                 return context.Teas.Where(tea => tea.Name.Contains(teaName) && tea.UserId == userId).ToList();
+            }
         }
 
         public IList<Tea> GetByType(int userId, string teaType, bool isStrictSearch = true)
         {
             if (isStrictSearch)
+            {
                 return context.Teas.Where(tea => tea.Type==teaType && tea.UserId == userId).ToList();
+            }
             else
+            {
                 return context.Teas.Where(tea => tea.Type.Contains(teaType) && tea.UserId == userId).ToList();
-            
+            }
         }
 
         public int Add(Tea tea)
         {
-            if (tea.ID != null)
+            if (tea.Id != null)
             {
                 throw new InvalidOperationException();
             }
@@ -54,22 +69,25 @@ namespace TeaDiary.dataaccess.Repositories
             tea.UpdateDate = tea.CreationDate = DateTime.Now;
             var added = context.Teas.Add(tea);
             context.SaveChanges();
-            tea.ID = added.ID;
-            if (tea.ID == null)
+            tea.Id = added.Id;
+            if (tea.Id == null)
             {
                 throw new Exception();
             }
-            else 
-                return tea.ID.GetValueOrDefault();
+            else
+            {
+                return tea.Id.GetValueOrDefault();
+            }
         }
 
         public bool Update(Tea tea)
         {
-            if (tea.ID == null)
+            if (tea.Id == null)
             {
                 return false;
             }
-            var existing = context.Teas.Find(tea.ID);
+
+            var existing = context.Teas.Find(tea.Id);
             if (existing == null)
             {
                 return false;

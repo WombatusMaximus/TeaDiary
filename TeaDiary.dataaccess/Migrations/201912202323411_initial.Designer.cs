@@ -13,7 +13,7 @@ namespace TeaDiary.dataaccess.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201912191154492_initial"; }
+            get { return "201912202323411_initial"; }
         }
         
         string IMigrationMetadata.Source

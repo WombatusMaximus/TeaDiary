@@ -30,7 +30,7 @@ namespace TeaDiary.api.Controllers
         // GET api/tea/5
         public Tea Get(int id)
         {
-            return teaGetter.GetByID(id);
+            return teaGetter.GetById(id);
         }
         
         [Route("SearchByName")]

@@ -6,31 +6,31 @@ namespace TeaDiary.business.Values
 {
     public class TeaUpdater : ITeaUpdater
     {
-        private readonly ITeaRepository values;
-        private readonly IUserProvider user;
+        private readonly ITeaRepository teaRepository;
+        private readonly ICurrentUserProvider currentUser;
 
-        public TeaUpdater(ITeaRepository values, IUserProvider user)
+        public TeaUpdater(ITeaRepository teaRepository, ICurrentUserProvider currentUser)
         {
-            this.values = values;
-            this.user = user;
+            this.teaRepository = teaRepository;
+            this.currentUser = currentUser;
         }
         public int Create(Tea tea)
         {
             tea.UpdateDate = tea.CreationDate = DateTime.Now;
-            tea.UserId = user.GetUserId();
-            return values.Add(tea);
+            tea.UserId = currentUser.GetUserId();
+            return teaRepository.Add(tea);
         }
 
         public bool Update(Tea tea)
         {
             tea.UpdateDate = DateTime.Now;
-            tea.UserId = user.GetUserId();
-            return values.Update(tea);
+            tea.UserId = currentUser.GetUserId();
+            return teaRepository.Update(tea);
         }
 
         public bool Delete(int id)
         {
-            return values.Delete(id);
+            return teaRepository.Delete(id);
         }
     }
 }

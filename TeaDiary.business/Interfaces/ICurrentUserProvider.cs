@@ -2,7 +2,7 @@
 
 namespace TeaDiary.business.Interfaces
 {
-    public interface IUserProvider
+    public interface ICurrentUserProvider
     {
         int GetUserId();
         string GetUserName();
