@@ -10,7 +10,7 @@ namespace TeaDiary.business.Interfaces
         IList<Tea> GetByName(int userId, string teaName, bool isStrictSearch = true);
         IList<Tea> GetByType(int userId, string teaType, bool isStrictSearch = true);
         int Add(Tea tea);
-        bool Update(Tea tea);
-        bool Delete(int id);
+        bool Update(int userId, Tea tea);
+        bool Delete(int userId, int id);
     }
 }

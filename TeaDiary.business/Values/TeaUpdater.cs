@@ -24,13 +24,12 @@ namespace TeaDiary.business.Values
         public bool Update(Tea tea)
         {
             tea.UpdateDate = DateTime.Now;
-            tea.UserId = currentUser.GetUserId();
-            return teaRepository.Update(tea);
+            return teaRepository.Update(currentUser.GetUserId(), tea);
         }
 
         public bool Delete(int id)
         {
-            return teaRepository.Delete(id);
+            return teaRepository.Delete(currentUser.GetUserId(),id);
         }
     }
 }
