@@ -11,7 +11,7 @@ namespace TeaDiary.dataaccess.Repositories
 {
     public class TeaRepository:ITeaRepository
     {
-        private TeaDiaryContext context;
+        private readonly TeaDiaryContext context;
 
         public TeaRepository(TeaDiaryContext context)
         {
@@ -80,7 +80,7 @@ namespace TeaDiary.dataaccess.Repositories
             }
         }
 
-        public bool Update(Tea tea)
+        public bool Update(int userId, Tea tea)
         {
             if (tea.Id == null)
             {
@@ -88,22 +88,23 @@ namespace TeaDiary.dataaccess.Repositories
             }
 
             var existing = context.Teas.Find(tea.Id);
-            if (existing == null)
+            if (existing == null || existing.UserId != userId)
             {
                 return false;
             }
 
             tea.CreationDate = existing.CreationDate;
             tea.UpdateDate = DateTime.Now;
+            tea.UserId = userId;
             context.Teas.AddOrUpdate(tea);
             context.SaveChanges();
             return true;
         }
 
-        public bool Delete(int id)
+        public bool Delete(int userId, int id)
         {
             var existing = context.Teas.Find(id);
-            if (existing == null)
+            if (existing == null || existing.UserId != userId)
             {
                 return false;
             }
