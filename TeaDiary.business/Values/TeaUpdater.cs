@@ -24,14 +24,7 @@ namespace TeaDiary.business.Values
         public bool Update(Tea tea)
         {
             tea.UpdateDate = DateTime.Now;
-            if (tea.UserId != currentUser.GetUserId())
-            {
-                return false;
-            }
-            else
-            {
-                return teaRepository.Update(currentUser.GetUserId(), tea);
-            }
+            return teaRepository.Update(currentUser.GetUserId(), tea);
         }
 
         public bool Delete(int id)
