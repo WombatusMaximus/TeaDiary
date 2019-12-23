@@ -10,9 +10,29 @@ namespace TeaDiary.api.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Tea Diary";
 
             return View();
+        }
+
+        public ActionResult Tea(int id)
+        {
+            return View("~/Views/Tea/GetById.cshtml", id);
+        }
+
+        public ActionResult Teas()
+        {
+            return View("~/Views/Tea/GetAll.cshtml");
+        }
+
+        public ActionResult AddTea()
+        {
+            return View("~/Views/Tea/Add.cshtml");
+        }
+
+        public ActionResult Search()
+        {
+            return View("~/Views/Tea/Search.cshtml");
         }
     }
 }

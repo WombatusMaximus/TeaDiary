@@ -31,12 +31,14 @@ namespace TeaDiary.dataaccess.Repositories
             }
             else
             {
-                throw new InvalidOperationException("Sorry, it looks like your user permissions are not quite right to be able to see this, thank you, have a good day!");
+                //throw new InvalidOperationException("Sorry, it looks like your user permissions are not quite right to be able to see this, thank you, have a good day!");
+                return null;
             }
         }
 
         public IList<Tea> GetByName(int userId, string teaName, bool isStrictSearch = true)
         {
+            //throw new InvalidOperationException();
             if (isStrictSearch)
             {
                 return context.Teas.Where(tea => tea.Name == teaName && tea.UserId == userId).ToList();
@@ -61,11 +63,11 @@ namespace TeaDiary.dataaccess.Repositories
 
         public int Add(Tea tea)
         {
-            if (tea.Id != null)
+            if (tea.Id != null || tea.Name == null || tea.Type == null)
             {
                 throw new InvalidOperationException();
             }
-            
+
             tea.UpdateDate = tea.CreationDate = DateTime.Now;
             var added = context.Teas.Add(tea);
             context.SaveChanges();
@@ -82,7 +84,7 @@ namespace TeaDiary.dataaccess.Repositories
 
         public bool Update(int userId, Tea tea)
         {
-            if (tea.Id == null)
+            if (tea.Id == null || tea.Name == null || tea.Type == null)
             {
                 return false;
             }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TeaDiary.business.Interfaces;
 using TeaDiary.domain.Models;
@@ -27,6 +28,7 @@ namespace TeaDiary.business.Values
 
         public IList<Tea> GetByName(string name, bool isStrictSearch = true)
         {
+            //throw new InvalidOperationException();
             return teaRepository.GetByName(currentUser.GetUserId(), name, isStrictSearch);
         }
 

@@ -1,0 +1,31 @@
+﻿@model int
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+<h2></h2>
+<form class="input-group form-control">
+    <div class="row row-no-gutters">
+        <input type="text" id="Name" required placeholder="Tea name" class="input-lg">
+    </div>
+    <div class="row row-no-gutters">
+        <input type="text" id="AdditionalName" placeholder="Additional tea name" class="input-lg">
+    </div>
+    <div class="row row-no-gutters">
+        <input type="text" id="Type" required placeholder="Tea type" class="input-lg">
+    </div>
+    <div class="row row-no-gutters">
+        <textarea id="Notes" placeholder="Your notes" wrap="soft" class="input-lg"></textarea>
+    </div>
+    <a class="btn btn-default" id="Update" onclick="UpdateClick()">Update</a>
+    <a class="btn btn-danger" id="Delete" onclick="DeleteClick()">Delete</a>
+</form>
+<p class="btn btn-default" id="SuccessfulAlarmbox" style="display: none">Success</p>
+</body>
+
+@section scripts
+{
+    <script>var currentId = @Model</script>
+    @Scripts.Render("~/bundles/Tea/Get")
+}

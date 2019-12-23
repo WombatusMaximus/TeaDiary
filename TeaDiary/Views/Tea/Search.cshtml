@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<h1>Search</h1>
+<form>
+    <input type="text" id="SearchRequest" placeholder="Request text" />
+    <select id="SearchType">
+        <option value="Name">By name</option>
+        <option value="Type">By type</option>
+    </select>
+    <div><input type="checkbox" id="IsStrictSearch"> Strict search</div>
+    <a class="btn btn-default" id="Search" onclick="SearchClick()">Search</a>
+</form>
+<div id="SearchResults">
+
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/Tea/Search")
+}
