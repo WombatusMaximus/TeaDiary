@@ -28,7 +28,6 @@ namespace TeaDiary.business.Values
 
         public IList<Tea> GetByName(string name, bool isStrictSearch = true)
         {
-            //throw new InvalidOperationException();
             return teaRepository.GetByName(currentUser.GetUserId(), name, isStrictSearch);
         }
 

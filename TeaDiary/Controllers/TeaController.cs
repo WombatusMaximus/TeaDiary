@@ -37,7 +37,6 @@ namespace TeaDiary.api.Controllers
         [HttpGet]
         public IList<Tea> SearchByName(string teaName, bool isStrictSearch = true)
         {
-            //throw new InvalidOperationException();
             return teaGetter.GetByName(teaName,isStrictSearch);
         }
 
