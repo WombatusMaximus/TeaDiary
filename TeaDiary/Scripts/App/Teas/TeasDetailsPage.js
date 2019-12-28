@@ -45,7 +45,7 @@ function onUpdateClick() {
             if (success) {
                 showSuccessMessage();
             } else {
-                
+                showFailureMessage();
             }
         });
 }
@@ -56,10 +56,7 @@ function onDeleteClick() {
             if (callback == true) {
                 $(location).attr('href', '/Teas');
             } else {
-                $("#SuccessfulAlarmbox").removeClass("btn-default");
-                $("#SuccessfulAlarmbox").addClass("btn-danger");
-                $("#SuccessfulAlarmbox").text(failureText);
-                $("#SuccessfulAlarmbox").fadeIn("fast");
+                showFailureMessage();
             }
         });
 }
