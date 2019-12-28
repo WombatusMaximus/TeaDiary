@@ -3,26 +3,25 @@
 }
 
 <body>
-<h2></h2>
+<h2>Make your new tea note</h2>
 <form class="input-group form-control">
     <div class="row row-no-gutters">
-        <input type="text" id="Name" required placeholder="Tea name" class="input-lg">
+        <input type="text" id="Name" placeholder="Tea name" class="input-lg">
     </div>
     <div class="row row-no-gutters">
         <input type="text" id="AdditionalName" placeholder="Additional tea name" class="input-lg">
     </div>
     <div class="row row-no-gutters">
-        <input type="text" id="Type" required placeholder="Tea type" class="input-lg">
+        <input type="text" id="Type" placeholder="Tea type" class="input-lg">
     </div>
     <div class="row row-no-gutters">
         <textarea id="Notes" placeholder="Your notes" wrap="soft" class="input-lg"></textarea>
     </div>
-    <a class="btn btn-default" id="Update" onclick="AddClick()">Add</a>
-    <a class="btn btn-danger" id="Delete" onclick="DeleteClick()" style="display:none">Delete</a>
-</form>
+    <a class="btn btn-default" id="Update" onclick="onCreateClick()">Create</a>
+    </form>
 </body>
 
 @section scripts
 {
-    @Scripts.Render("~/bundles/Tea/Add")
+    @Scripts.Render("~/bundles/Teas/Create")
 }

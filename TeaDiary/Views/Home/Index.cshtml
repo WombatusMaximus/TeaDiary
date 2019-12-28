@@ -8,17 +8,17 @@
         <p>
             Start with adding new tea to your diary:
         </p>
-        <p class="btn btn-default">@Html.ActionLink(linkText: "Add tea", actionName: "AddTea", controllerName: "Home", routeValues: new { area = "" }, htmlAttributes: null)</p>
+        <p class="btn btn-default">@Html.ActionLink(linkText: "Add tea", actionName: "Create", controllerName: "Teas", routeValues: new { area = "" }, htmlAttributes: null)</p>
     </div>
     <div class="col-md-4">
         <h2>Re-experience</h2>
         <p>Look through the history of your experience:</p>
-        <p class="btn btn-default">@Html.ActionLink(linkText: "My teas", actionName: "Teas", controllerName: "Home", routeValues: new {area = ""}, htmlAttributes: null)</p>
+        <p class="btn btn-default">@Html.ActionLink(linkText: "My teas", actionName: "Index", controllerName: "Teas", routeValues: new {area = ""}, htmlAttributes: null)</p>
     </div>
     <div class="col-md-4">
         <h2>Forgot something?</h2>
         <p>You can easily find the tea you want to remember with our best of the lines search engine!</p>
-        <p class="btn btn-default">@Html.ActionLink(linkText: "Search", actionName: "Search", controllerName: "Home", routeValues: new { area = "" }, htmlAttributes: null)</p>
+        <p class="btn btn-default">@Html.ActionLink(linkText: "Search", actionName: "Index", controllerName: "Search", routeValues: new { area = "" }, htmlAttributes: null)</p>
     </div>
 </div>
 

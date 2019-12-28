@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="row">
+        <p class="btn btn-default">@Html.ActionLink(linkText: "Add tea", actionName: "Create", controllerName: "Teas", routeValues: new { area = "" },htmlAttributes: null)</p>
+        <div class="row" id="TeaList">
+
+        </div>
+    </div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/Teas/Index")
+}

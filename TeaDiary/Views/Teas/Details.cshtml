@@ -18,8 +18,8 @@
     <div class="row row-no-gutters">
         <textarea id="Notes" placeholder="Your notes" wrap="soft" class="input-lg"></textarea>
     </div>
-    <a class="btn btn-default" id="Update" onclick="UpdateClick()">Update</a>
-    <a class="btn btn-danger" id="Delete" onclick="DeleteClick()">Delete</a>
+    <a class="btn btn-default" id="Update" onclick="onUpdateClick()">Update</a>
+    <a class="btn btn-danger" id="Delete" onclick="onDeleteClick()">Delete</a>
 </form>
 <p class="btn btn-default" id="SuccessfulAlarmbox" style="display: none">Success</p>
 </body>
@@ -27,5 +27,5 @@
 @section scripts
 {
     <script>var currentId = @Model</script>
-    @Scripts.Render("~/bundles/Tea/Get")
+    @Scripts.Render("~/bundles/Teas/Details")
 }

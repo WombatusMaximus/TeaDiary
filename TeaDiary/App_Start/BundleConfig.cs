@@ -22,21 +22,30 @@ namespace TeaDiary.api
             bundles.Add(new ScriptBundle("~/bundles/application").Include(
                 "~/Scripts/App/*.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/Tea/GetAll").Include(
-                "~/Scripts/App/Tea/GetAll.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/Tea/Get").Include(
-                "~/Scripts/App/Tea/GetById.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/Tea/Add").Include(
-                "~/Scripts/App/Tea/Add.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/Tea/Search").Include(
-                "~/Scripts/App/Tea/Search.js"));
+            registerPageSpecificBundles(bundles);
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+        }
+
+        private static void registerPageSpecificBundles(BundleCollection bundles)
+        {
+            #region Teas Pages
+                bundles.Add(new ScriptBundle("~/bundles/Teas/Index").Include(
+                        "~/Scripts/App/Teas/TeasIndexPage.js"));
+
+                bundles.Add(new ScriptBundle("~/bundles/Teas/Details").Include(
+                    "~/Scripts/App/Teas/TeasDetailsPage.js"));
+
+                bundles.Add(new ScriptBundle("~/bundles/Teas/Create").Include(
+                    "~/Scripts/App/Teas/TeasCreatePage.js"));
+            #endregion
+
+            #region Search pages
+                bundles.Add(new ScriptBundle("~/bundles/Search/Index").Include(
+                    "~/Scripts/App/Search/SearchIndexPage.js"));
+            #endregion
         }
     }
 }

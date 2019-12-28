@@ -4,14 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace TeaDiary.api.Controllers
+namespace TeaDiary.Controllers
 {
-    public class HomeController : Controller
+    public class SearchController : Controller
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Tea Diary";
-
             return View();
         }
     }

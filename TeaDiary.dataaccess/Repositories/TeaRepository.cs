@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using TeaDiary.business.Interfaces;
@@ -24,10 +25,10 @@ namespace TeaDiary.dataaccess.Repositories
 
         public Tea GetById(int userId, int teaId)
         {
-            var result = context.Teas.Find(teaId);
-            if (result==null||result.UserId == userId)
+            var tea = context.Teas.Find(teaId);
+            if (tea==null||tea.UserId == userId)
             {
-                return result; 
+                return tea; 
             }
             else
             {
@@ -35,36 +36,34 @@ namespace TeaDiary.dataaccess.Repositories
             }
         }
 
-        public IList<Tea> GetByName(int userId, string teaName, bool isStrictSearch = true)
+        public IList<Tea> GetByName(int userId, string teaName, bool strict = true)
         {
-            
-            if (isStrictSearch)
-            {
-                return context.Teas.Where(tea => tea.Name == teaName && tea.UserId == userId).ToList();
-            }
-            else
-            {
-                return context.Teas.Where(tea => tea.Name.Contains(teaName) && tea.UserId == userId).ToList();
-            }
+            var teaList = context.Teas.Where(
+                tea => tea.UserId == userId &&
+                       (strict ? tea.Name == teaName : tea.Name.Contains(teaName))
+                ).ToList();
+            return teaList;
         }
 
-        public IList<Tea> GetByType(int userId, string teaType, bool isStrictSearch = true)
+        public IList<Tea> GetByType(int userId, string teaType, bool strict = true)
         {
-            if (isStrictSearch)
-            {
-                return context.Teas.Where(tea => tea.Type==teaType && tea.UserId == userId).ToList();
-            }
-            else
-            {
-                return context.Teas.Where(tea => tea.Type.Contains(teaType) && tea.UserId == userId).ToList();
-            }
+            var teaList = context.Teas.Where(
+                tea => tea.UserId == userId &&
+                       (strict ? tea.Type == teaType : tea.Type.Contains(teaType))
+            ).ToList();
+            return teaList;
         }
 
         public int Add(Tea tea)
         {
-            if (tea.Id != null || tea.Name == null || tea.Type == null)
+            if (tea.Id != null)
             {
                 throw new InvalidOperationException();
+            }
+
+            if (tea.Name == null || tea.Type == null)
+            {
+                throw new ValidationException();
             }
 
             tea.UpdateDate = tea.CreationDate = DateTime.Now;

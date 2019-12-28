@@ -170,7 +170,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\TeaController.cs" />
+    <Compile Include="Api_Controllers\TeaController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\TeasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,13 +188,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\App\Tea\Add.js" />
-    <Content Include="Scripts\App\Tea\GetById.js" />
-    <Content Include="Scripts\App\Tea\GetAll.js" />
+    <Content Include="Scripts\App\displayTea.js" />
+    <Content Include="Scripts\App\displayTeaList.js" />
+    <Content Include="Scripts\App\Teas\TeasCreatePage.js" />
+    <Content Include="Scripts\App\Teas\TeasDetailsPage.js" />
     <Content Include="Scripts\App\main.js" />
-    <Content Include="Scripts\App\getters.js" />
-    <Content Include="Scripts\App\Tea\Search.js" />
-    <Content Include="Scripts\App\updaters.js" />
+    <Content Include="Scripts\App\ApiQueries.js" />
+    <Content Include="Scripts\App\Teas\TeasIndexPage.js" />
+    <Content Include="Scripts\App\Search\SearchIndexPage.js" />
+    <Content Include="Scripts\App\ApiCommands.js" />
+    <Content Include="Scripts\App\validation.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -234,14 +239,15 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Tea\GetAll.cshtml" />
-    <Content Include="Views\Tea\GetById.cshtml" />
-    <Content Include="Views\Tea\Add.cshtml" />
-    <Content Include="Views\Tea\Search.cshtml" />
+    <Content Include="Views\Teas\Index.cshtml" />
+    <Content Include="Views\Teas\Details.cshtml" />
+    <Content Include="Views\Teas\Create.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\App\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
