@@ -51,8 +51,8 @@ function onUpdateClick() {
 
 function onDeleteClick() {
     ApiCommands.deleteTea(currentId,
-        (callback) => {
-            if (callback == true) {
+        (success) => {
+            if (success) {
                 redirectToTeaList();
             } else {
                 showFailureMessage();
