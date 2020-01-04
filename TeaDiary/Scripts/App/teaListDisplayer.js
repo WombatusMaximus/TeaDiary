@@ -47,7 +47,7 @@
     }
 
     self.loadAndDisplay = () => {
-        ApiQueries.getTeas((teas) => {
+        apiQueries.getTeas((teas) => {
             self.display(teas);
         });
     }

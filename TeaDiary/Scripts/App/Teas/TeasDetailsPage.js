@@ -39,7 +39,7 @@ function onUpdateClick() {
         Notes: $('#Notes').val()
     }
 
-    ApiCommands.updateTea(tea,
+    apiCommands.updateTea(tea,
         (success) => {
             if (success) {
                 showSuccessMessage();
@@ -50,7 +50,7 @@ function onUpdateClick() {
 }
 
 function onDeleteClick() {
-    ApiCommands.deleteTea(currentId,
+    apiCommands.deleteTea(currentId,
         (success) => {
             if (success) {
                 redirectToTeaList();

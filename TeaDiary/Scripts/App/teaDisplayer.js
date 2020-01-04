@@ -21,7 +21,7 @@
     }
 
     self.loadAndDisplay = (id, callback) => {
-        ApiQueries.getTea(id,
+        apiQueries.getTea(id,
             (tea) => {
                 if (isTeaValid(tea)) {
                     self.display(tea);

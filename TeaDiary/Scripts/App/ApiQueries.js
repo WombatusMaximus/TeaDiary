@@ -1,4 +1,4 @@
-﻿function apiQueries() {
+﻿function ApiQueries() {
     var self = this;
     self.getTeas = (callback) => {
         $.ajax("/api/tea",

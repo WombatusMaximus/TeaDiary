@@ -1,4 +1,4 @@
-﻿function apiCommands() {
+﻿function ApiCommands() {
     var self = this;
 
     self.addTea = (tea, callback) => {

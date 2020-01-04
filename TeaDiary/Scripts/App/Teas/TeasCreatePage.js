@@ -6,7 +6,7 @@
         Notes: $('#Notes').val()
     }
     if (isTeaValid(tea)) {
-        ApiCommands.addTea(tea,
+        apiCommands.addTea(tea,
             (id) => {
                 redirectToTeaDetailsPage(id);
             });

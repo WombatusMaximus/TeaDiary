@@ -4,7 +4,7 @@
 });
 
 function onSearchClick() {
-    var search = $("#SearchType").val() === searchType.Name ? ApiQueries.searchByName : ApiQueries.searchByType;
+    var search = $("#SearchType").val() === searchType.Name ? apiQueries.searchByName : apiQueries.searchByType;
 
     search($("#SearchRequest").val(),
         $("#IsStrictSearch").prop("checked"),

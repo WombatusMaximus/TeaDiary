@@ -1,5 +1,5 @@
-﻿var ApiCommands = new apiCommands();
-var ApiQueries = new apiQueries();
+﻿var apiCommands = new ApiCommands();
+var apiQueries = new ApiQueries();
 
 var failureText = "Fail";
 var successText = "Success";
