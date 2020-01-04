@@ -9,7 +9,7 @@
     displayer.loadAndDisplay(currentId,
         (success) => {
             if (!success) {
-                $(location).attr('href', TeasPageLink);
+                redirectToTeaList();
             }
         });
 });
@@ -54,9 +54,13 @@ function onDeleteClick() {
     ApiCommands.deleteTea(currentId,
         (callback) => {
             if (callback == true) {
-                $(location).attr('href', '/Teas');
+                redirectToTeaList();
             } else {
                 showFailureMessage();
             }
         });
+}
+
+function redirectToTeaList() {
+    $(location).attr('href', TeasPageLink);
 }

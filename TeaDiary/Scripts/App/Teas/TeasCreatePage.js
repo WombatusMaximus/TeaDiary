@@ -7,8 +7,12 @@
     }
     if (isTeaValid(tea)) {
         ApiCommands.addTea(tea,
-            (callback) => {
-                $(location).attr('href', TeaDetailsPageLink+callback);
+            (id) => {
+                redirectToTeaDetailsPage(id);
             });
     }
+}
+
+function redirectToTeaDetailsPage(id) {
+    $(location).attr('href', TeaDetailsPageLink + id);
 }
