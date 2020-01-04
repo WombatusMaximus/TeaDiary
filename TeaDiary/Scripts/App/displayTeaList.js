@@ -33,7 +33,7 @@
         add(teaLine);
     }
 
-    self.displayTeas = (teas) => {
+    self.display = (teas) => {
         clearContainer();
         setContainerLoading(true);
 
@@ -46,9 +46,9 @@
         setContainerLoading(false);
     }
 
-    self.getTeas = () => {
-        getTeas((teas) => {
-            self.displayTeas(teas);
+    self.loadAndDisplay = () => {
+        ApiQueries.getTeas((teas) => {
+            self.display(teas);
         });
     }
 }

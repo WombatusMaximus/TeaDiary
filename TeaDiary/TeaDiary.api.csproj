@@ -192,7 +192,6 @@
     <Content Include="Scripts\App\displayTeaList.js" />
     <Content Include="Scripts\App\Teas\TeasCreatePage.js" />
     <Content Include="Scripts\App\Teas\TeasDetailsPage.js" />
-    <Content Include="Scripts\App\main.js" />
     <Content Include="Scripts\App\ApiQueries.js" />
     <Content Include="Scripts\App\Teas\TeasIndexPage.js" />
     <Content Include="Scripts\App\Search\SearchIndexPage.js" />

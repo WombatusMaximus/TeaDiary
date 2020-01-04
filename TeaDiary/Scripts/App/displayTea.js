@@ -12,7 +12,7 @@
         notes.html('');
     }
     
-    self.displayTea = (tea) => {
+    self.display = (tea) => {
         clearContainers();
         name.val(tea.Name);
         secondName.val(tea.AdditionalName);
@@ -20,11 +20,11 @@
         notes.val(tea.Notes);
     }
 
-    self.getTeaById = (id, callback) => {
-        getTea(id,
+    self.loadAndDisplay = (id, callback) => {
+        ApiQueries.getTea(id,
             (tea) => {
                 if (isTeaValid(tea)) {
-                    self.displayTea(tea);
+                    self.display(tea);
                 }
                 callback(isTeaValid(tea));
             });

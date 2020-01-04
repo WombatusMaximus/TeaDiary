@@ -6,7 +6,7 @@
         Notes: '#Notes'
     });
 
-    displayer.getTeaById(currentId,
+    displayer.loadAndDisplay(currentId,
         (success) => {
             if (!success) {
                 $(location).attr('href', TeasPageLink);
@@ -40,7 +40,7 @@ function onUpdateClick() {
         AdditionalName: $('#AdditionalName').val(),
         Notes: $('#Notes').val()
     }
-    updateTea(tea,
+    ApiCommands.updateTea(tea,
         (success) => {
             if (success) {
                 showSuccessMessage();
@@ -51,7 +51,7 @@ function onUpdateClick() {
 }
 
 function onDeleteClick() {
-    deleteTea(currentId,
+    ApiCommands.deleteTea(currentId,
         (callback) => {
             if (callback == true) {
                 $(location).attr('href', '/Teas');

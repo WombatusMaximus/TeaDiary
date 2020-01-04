@@ -1,10 +1,10 @@
 ﻿function onSearchClick() {
-    var search = $("#SearchType").val() === "Name" ? searchByName : searchByType;
+    var search = $("#SearchType").val() === "Name" ? ApiQueries.searchByName : ApiQueries.searchByType;
 
     search($("#SearchRequest").val(),
         $("#IsStrictSearch").prop("checked"),
         (teaList) => {
             var displayer = new TeaListDisplayer("#SearchResults");
-            displayer.displayTeas(teaList);
+            displayer.display(teaList);
         });
 }

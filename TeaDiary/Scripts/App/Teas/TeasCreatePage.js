@@ -6,7 +6,7 @@
         Notes: $('#Notes').val()
     }
     if (isTeaValid(tea)) {
-        addTea(tea,
+        ApiCommands.addTea(tea,
             (callback) => {
                 $(location).attr('href', TeaDetailsPageLink+callback);
             });
