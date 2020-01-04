@@ -15,7 +15,6 @@
 });
 
 function showSuccessMessage() {
-    var successText = "Success";
     $("#SuccessfulAlarmbox").hide();
     $("#SuccessfulAlarmbox").removeClass("btn-danger");
     $("#SuccessfulAlarmbox").addClass("btn-default");
@@ -24,7 +23,6 @@ function showSuccessMessage() {
 }
 
 function showFailureMessage() {
-    var failureText = "Fail";    
     $("#SuccessfulAlarmbox").hide();
     $("#SuccessfulAlarmbox").removeClass("btn-default");
     $("#SuccessfulAlarmbox").addClass("btn-danger");
@@ -40,6 +38,7 @@ function onUpdateClick() {
         AdditionalName: $('#AdditionalName').val(),
         Notes: $('#Notes').val()
     }
+
     ApiCommands.updateTea(tea,
         (success) => {
             if (success) {

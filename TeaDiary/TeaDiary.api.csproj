@@ -188,6 +188,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\App\constants.js" />
     <Content Include="Scripts\App\displayTea.js" />
     <Content Include="Scripts\App\displayTeaList.js" />
     <Content Include="Scripts\App\Teas\TeasCreatePage.js" />

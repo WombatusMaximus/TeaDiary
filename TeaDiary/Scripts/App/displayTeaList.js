@@ -13,9 +13,9 @@
     }
     function buildTeaListHeader(tea) {
         if (tea != null && tea.length > 0) {
-            return "<h2>Your tea list:</h2>";
+            return teaListTitle;
         } else {
-            return "<h2>No teas were found :(</h2>";
+            return noTeasTitle;
         }
     }
     function getTeaSerialized(tea) {
