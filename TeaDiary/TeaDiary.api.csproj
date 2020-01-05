@@ -190,8 +190,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\App\constants.js" />
-    <Content Include="Scripts\App\TeaDisplayer.js" />
-    <Content Include="Scripts\App\TeaListDisplayer.js" />
+    <Content Include="Scripts\App\teaDisplayer.js" />
+    <Content Include="Scripts\App\teaListDisplayer.js" />
     <Content Include="Scripts\App\Teas\Details.js" />
     <Content Include="Scripts\App\ApiQueries.js" />
     <Content Include="Scripts\App\Teas\Index.js" />

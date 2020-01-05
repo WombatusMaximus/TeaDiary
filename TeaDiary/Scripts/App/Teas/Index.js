@@ -1,4 +1,4 @@
 ﻿$(document).ready(() => {
-    var displayer = new TeaListDisplayer("#TeaList");
+    var displayer = new teaListDisplayer("#TeaList");
     displayer.loadAndDisplay();
 });

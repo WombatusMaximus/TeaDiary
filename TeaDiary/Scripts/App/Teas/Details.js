@@ -13,7 +13,7 @@ function documentLoaded() {
 function detailsPageLoaded() {
     $("#Create").hide();
 
-    var displayer = new TeaDisplayer({
+    var displayer = new teaDisplayer({
         Name: '#Name',
         SecondName: '#AdditionalName',
         Type: '#Type',

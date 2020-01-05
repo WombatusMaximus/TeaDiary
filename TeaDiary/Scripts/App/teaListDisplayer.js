@@ -1,44 +1,44 @@
-﻿function TeaListDisplayer(container) {
+﻿function teaListDisplayer(container) {
     var self = this;
     self.container = $(container);
     function clearContainer() {
         self.container.html("");
     }
-    function setContainerLoading(loading) {
-        if (loading) {
+    function setContainerLoading(isLoading) {
+        if (isLoading) {
             self.container.hide();
         } else {
             self.container.show();
         }
     }
-    function buildTeaListHeader(tea) {
-        if (tea != null && tea.length > 0) {
+    function buildHeader(teas) {
+        if (teas != null && teas.length > 0) {
             return teaListTitle;
         } else {
             return noTeasTitle;
         }
     }
-    function getTeaSerialized(tea) {
+    function buildElement(tea) {
         var teaString = $('<a>')
             .attr('href', TeaDetailsPageLink + tea.Id)
             .text(tea.Name + ' (' + tea.Type + ')');
         return teaString;
     }
-    function add(text) {
+    function appendElement(text) {
         self.container.append(text);
         self.container.append($('</br>'));
     }
     function displayTea(tea) {
-        var teaLine = getTeaSerialized(tea);
-        add(teaLine);
+        var teaLine = buildElement(tea);
+        appendElement(teaLine);
     }
 
     self.display = (teas) => {
         clearContainer();
         setContainerLoading(true);
 
-        var header = buildTeaListHeader(teas);
-        add(header);
+        var header = buildHeader(teas);
+        appendElement(header);
         teas.forEach((tea) => {
             displayTea(tea);
         });

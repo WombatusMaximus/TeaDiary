@@ -9,7 +9,7 @@ function onSearchClick() {
     search($("#SearchRequest").val(),
         $("#IsStrictSearch").prop("checked"),
         (teaList) => {
-            var displayer = new TeaListDisplayer("#SearchResults");
+            var displayer = new teaListDisplayer("#SearchResults");
             displayer.display(teaList);
         });
 }

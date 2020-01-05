@@ -1,16 +1,16 @@
-﻿function TeaDisplayer(containers) {
+﻿function teaDisplayer(teaEditingFields) {
     var self = this;
-    self.containers = containers;
-    var name = $(self.containers.Name);
-    var secondName = $(self.containers.SecondName);
-    var type = $(self.containers.Type);
-    var notes = $(self.containers.Notes);
+    self.editingFields = teaEditingFields;
+    var nameEditor = $(self.editingFields.Name);
+    var secondNameEditor = $(self.editingFields.SecondName);
+    var typeEditor = $(self.editingFields.Type);
+    var notesEditor = $(self.editingFields.Notes);
     self.display = (tea) => {
         clearContainers();
-        name.val(tea.Name);
-        secondName.val(tea.AdditionalName);
-        type.val(tea.Type);
-        notes.val(tea.Notes);
+        nameEditor.val(tea.Name);
+        secondNameEditor.val(tea.AdditionalName);
+        typeEditor.val(tea.Type);
+        notesEditor.val(tea.Notes);
     }
 
     self.loadAndDisplay = (id, callback) => {
@@ -24,9 +24,9 @@
     }
 
     function clearContainers() {
-        name.html('');
-        secondName.html('');
-        type.html('');
-        notes.html('');
+        nameEditor.html('');
+        secondNameEditor.html('');
+        typeEditor.html('');
+        notesEditor.html('');
     }
 }
