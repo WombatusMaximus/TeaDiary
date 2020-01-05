@@ -1,4 +1,18 @@
 ﻿$(document).ready(() => {
+    documentLoaded();
+});
+
+function documentLoaded() {
+    if (isCreatePage) {
+        createPageLoaded();
+    } else {
+        detailsPageLoaded();
+    }
+}
+
+function detailsPageLoaded() {
+    $("#Create").hide();
+
     var displayer = new TeaDisplayer({
         Name: '#Name',
         SecondName: '#AdditionalName',
@@ -12,7 +26,17 @@
                 redirectToTeaList();
             }
         });
-});
+}
+
+function createPageLoaded() {
+    $("#Update").hide();
+    $("#Delete").hide();
+
+    $("#Name").val("");
+    $("#AdditionalName").val("");
+    $("#Type").val("");
+    $("#Notes").val("");
+}
 
 function showSuccessMessage() {
     $("#SuccessfulAlarmbox").hide();
@@ -62,4 +86,27 @@ function onDeleteClick() {
 
 function redirectToTeaList() {
     $(location).attr('href', TeasPageLink);
+}
+
+function onCreateClick() {
+    tea = {
+        Type: $('#Type').val(),
+        Name: $('#Name').val(),
+        AdditionalName: $('#AdditionalName').val(),
+        Notes: $('#Notes').val()
+    }
+    if (isTeaValid(tea)) {
+        apiCommands.addTea(tea,
+            (id) => {
+                redirectToTeaDetailsPage(id);
+            });
+    }
+}
+
+function redirectToTeaDetailsPage(id) {
+    $(location).attr('href', TeaDetailsPageLink + id);
+}
+
+function onResetClick() {
+    documentLoaded();
 }

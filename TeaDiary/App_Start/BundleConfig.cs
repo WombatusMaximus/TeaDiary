@@ -36,10 +36,7 @@ namespace TeaDiary.api
 
             bundles.Add(new ScriptBundle("~/bundles/Teas/Details").Include(
                 "~/Scripts/App/Teas/Details.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/Teas/Create").Include(
-                "~/Scripts/App/Teas/Create.js"));
-
+            
             bundles.Add(new ScriptBundle("~/bundles/Search/Index").Include(
                     "~/Scripts/App/Search/Index.js"));
         }

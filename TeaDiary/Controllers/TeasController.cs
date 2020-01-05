@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TeaDiary.api.Models;
 
 namespace TeaDiary.Controllers
 {
@@ -16,12 +17,12 @@ namespace TeaDiary.Controllers
         
         public ActionResult Create()
         {
-            return View("~/Views/Teas/Create.cshtml");
+            return View("~/Views/Teas/Details.cshtml", new DisplayTeaViewModel(null));
         }
 
         public ActionResult Details(int id)
         {
-            return View("~/Views/Teas/Details.cshtml", id);
+            return View("~/Views/Teas/Details.cshtml", new DisplayTeaViewModel (id));
         }
     }
 }

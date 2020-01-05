@@ -1,4 +1,4 @@
-﻿@model int
+﻿@model TeaDiary.api.Models.DisplayTeaViewModel
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
 }
@@ -18,7 +18,9 @@
     <div class="row row-no-gutters">
         <textarea id="Notes" placeholder="Your notes" wrap="soft" class="input-lg"></textarea>
     </div>
-    <a class="btn btn-default" id="Update" onclick="onUpdateClick()">Update</a>
+    <a class="btn btn-default" id="Create" onclick="onCreateClick()">Save</a>
+    <a class="btn btn-default" id="Update" onclick="onUpdateClick()">Save</a>
+    <a class="btn btn-danger" id="Reset" onclick="onResetClick()">Reset</a>
     <a class="btn btn-danger" id="Delete" onclick="onDeleteClick()">Delete</a>
 </form>
 <p class="btn btn-default" id="SuccessfulAlarmbox" style="display: none">Success</p>
@@ -26,6 +28,9 @@
 
 @section scripts
 {
-    <script>var currentId = @Model</script>
+    <script>
+        var currentId = @Json.Encode(Model.Id);
+        var isCreatePage = @Json.Encode(Model.Create);
+    </script>
     @Scripts.Render("~/bundles/Teas/Details")
 }

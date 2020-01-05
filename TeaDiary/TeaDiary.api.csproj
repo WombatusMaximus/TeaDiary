@@ -176,6 +176,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DisplayTeaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CurrentUserProvider.cs" />
   </ItemGroup>
@@ -191,7 +192,6 @@
     <Content Include="Scripts\App\constants.js" />
     <Content Include="Scripts\App\TeaDisplayer.js" />
     <Content Include="Scripts\App\TeaListDisplayer.js" />
-    <Content Include="Scripts\App\Teas\Create.js" />
     <Content Include="Scripts\App\Teas\Details.js" />
     <Content Include="Scripts\App\ApiQueries.js" />
     <Content Include="Scripts\App\Teas\Index.js" />
@@ -241,12 +241,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Teas\Index.cshtml" />
     <Content Include="Views\Teas\Details.cshtml" />
-    <Content Include="Views\Teas\Create.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Scripts\App\Home\" />
   </ItemGroup>
   <ItemGroup>
