@@ -42,7 +42,7 @@ function showSuccessMessage() {
     $("#SuccessfulAlarmbox").hide();
     $("#SuccessfulAlarmbox").removeClass("btn-danger");
     $("#SuccessfulAlarmbox").addClass("btn-default");
-    $("#SuccessfulAlarmbox").text(successText);
+    $("#SuccessfulAlarmbox").text(SUCCESS_TEXT);
     $("#SuccessfulAlarmbox").show();
 }
 
@@ -50,7 +50,7 @@ function showFailureMessage() {
     $("#SuccessfulAlarmbox").hide();
     $("#SuccessfulAlarmbox").removeClass("btn-default");
     $("#SuccessfulAlarmbox").addClass("btn-danger");
-    $("#SuccessfulAlarmbox").text(failureText);
+    $("#SuccessfulAlarmbox").text(FAILURE_TEXT);
     $("#SuccessfulAlarmbox").show();
 }
 

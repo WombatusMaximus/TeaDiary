@@ -1,10 +1,10 @@
 ﻿$(document).ready(() => {
-    $("#SearchType").append($("<option>").val(searchType.Name).html("By " + searchType.Name));
-    $("#SearchType").append($("<option>").val(searchType.Type).html("By " + searchType.Type));
+    $("#SearchType").append($("<option>").val(SEARCT_TYPE.NAME).html("By " + SEARCT_TYPE.NAME));
+    $("#SearchType").append($("<option>").val(SEARCT_TYPE.TYPE).html("By " + SEARCT_TYPE.TYPE));
 });
 
 function onSearchClick() {
-    var search = $("#SearchType").val() === searchType.Name ? apiQueries.searchByName : apiQueries.searchByType;
+    var search = $("#SearchType").val() === SEARCT_TYPE.NAME ? apiQueries.searchByName : apiQueries.searchByType;
 
     search($("#SearchRequest").val(),
         $("#IsStrictSearch").prop("checked"),

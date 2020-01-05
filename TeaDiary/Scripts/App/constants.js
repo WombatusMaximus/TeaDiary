@@ -1,13 +1,13 @@
 ﻿const apiCommands = new ApiCommands();
 const apiQueries = new ApiQueries();
 
-const failureText = "Fail";
-const successText = "Success";
+const FAILURE_TEXT = "Fail";
+const SUCCESS_TEXT = "Success";
 
-const searchType = {
-    Name: "name",
-    Type: "type" 
+const SEARCT_TYPE = {
+    NAME: "name",
+    TYPE: "type" 
 };
 
-const teaListTitle = $("<h2>").html("Your tea list:");
-const noTeasTitle = $("<h2>").html("No teas were found :(");
+const TEA_LIST_TITLE = "Your tea list:";
+const NO_TEAS_TITLE = "No teas were found :(";
