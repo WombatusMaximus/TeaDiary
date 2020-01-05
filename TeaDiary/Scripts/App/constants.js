@@ -1,13 +1,13 @@
-﻿var apiCommands = new ApiCommands();
-var apiQueries = new ApiQueries();
+﻿const apiCommands = new ApiCommands();
+const apiQueries = new ApiQueries();
 
-var failureText = "Fail";
-var successText = "Success";
+const failureText = "Fail";
+const successText = "Success";
 
-var searchType = {
+const searchType = {
     Name: "name",
     Type: "type" 
 };
 
-var teaListTitle = $("<h2>").html("Your tea list:");
-var noTeasTitle = $("<h2>").html("No teas were found :(");
+const teaListTitle = $("<h2>").html("Your tea list:");
+const noTeasTitle = $("<h2>").html("No teas were found :(");
