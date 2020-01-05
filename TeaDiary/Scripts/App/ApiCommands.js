@@ -1,29 +1,43 @@
 ﻿function ApiCommands() {
     var self = this;
 
-    self.addTea = (tea, callback) => {
+    self.addTea = (tea, successCallback, errorCallback) => {
         $.ajax("/api/tea/",
             {
                 method: 'POST',
                 data: tea
             }
-        ).done((response) => { callback(response) });
+        ).done((response) => {
+            successCallback(response);
+        });
     }
 
-    self.updateTea = (tea, callback) => {
+    self.updateTea = (tea, successCallback, errorCallback) => {
         $.ajax("/api/tea/",
             {
                 method: 'PUT',
                 data: tea
             }
-        ).done((response) => { callback(response) });
+        ).done((response) => {
+            if (response) {
+                successCallback();
+            } else {
+                errorCallback();
+            }
+        });
     }
 
-    self.deleteTea = (id, callback) => {
+    self.deleteTea = (id, successC, errorCallback) => {
         $.ajax("/api/tea/" + id,
             {
                 method: 'DELETE'
             }
-        ).done((response) => { callback(response) });
+        ).done((response) => {
+            if (response) {
+                success();
+            } else {
+                errorCallback();
+            }
+        });
     }
 }

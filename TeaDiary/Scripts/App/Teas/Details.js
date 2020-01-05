@@ -64,13 +64,13 @@ function onUpdateClick() {
     }
 
     apiCommands.updateTea(tea,
-        (success) => {
-            if (success) {
-                showSuccessMessage();
-            } else {
-                showFailureMessage();
-            }
-        });
+        success => {
+            showSuccessMessage();
+        },
+        failure => {
+            showFailureMessage();
+        }
+    );
 }
 
 function onDeleteClick() {

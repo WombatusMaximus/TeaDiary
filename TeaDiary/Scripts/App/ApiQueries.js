@@ -1,34 +1,42 @@
 ﻿function ApiQueries() {
     var self = this;
-    self.getTeas = (callback) => {
+    self.getTeas = (successCallback, errorCallback) => {
         $.ajax("/api/tea",
             {
                 method: 'GET'
             }
-        ).done((teaList) => { callback(teaList) });
+        ).done((teaList) => {
+            successCallback(teaList);
+        });
     }
 
-    self.getTea = (id, callback) => {
+    self.getTea = (id, successCallback, errorCallback) => {
         $.ajax("/api/tea/" + id,
             {
                 method: 'GET'
             }
-        ).done((tea) => { callback(tea) });
+        ).done((tea) => {
+            successCallback(tea);
+        });
     }
 
-    self.searchByName = (name, strict, callback) => {
+    self.searchByName = (name, strict, successCallback, errorCallback) => {
         $.ajax("/api/tea/SearchByName?teaName=" + name + "&isStrictSearch=" + strict,
             {
                 method: 'GET'
             }
-        ).done((tealist) => { callback(tealist) });
+        ).done((tealist) => {
+            successCallback(tealist);
+        });
     }
 
-    self.searchByType = (type, strict, callback) => {
+    self.searchByType = (type, strict, successCallback, errorCallback) => {
         $.ajax("/api/tea/SearchByType?teaType=" + type + "&isStrictSearch=" + strict,
             {
                 method: 'GET'
             }
-        ).done((tealist) => { callback(tealist) });
+        ).done((tealist) => {
+            successCallback(tealist);
+        });
     }
 }
