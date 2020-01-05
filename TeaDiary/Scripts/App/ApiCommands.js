@@ -27,14 +27,14 @@
         });
     }
 
-    self.deleteTea = (id, successC, errorCallback) => {
+    self.deleteTea = (id, successCallback, errorCallback) => {
         $.ajax("/api/tea/" + id,
             {
                 method: 'DELETE'
             }
         ).done((response) => {
             if (response) {
-                success();
+                successCallback();
             } else {
                 errorCallback();
             }
