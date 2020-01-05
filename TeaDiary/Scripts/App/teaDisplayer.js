@@ -5,13 +5,6 @@
     var secondName = $(self.containers.SecondName);
     var type = $(self.containers.Type);
     var notes = $(self.containers.Notes);
-    function clearContainers() {
-        name.html('');
-        secondName.html('');
-        type.html('');
-        notes.html('');
-    }
-    
     self.display = (tea) => {
         clearContainers();
         name.val(tea.Name);
@@ -28,5 +21,12 @@
                 }
                 callback(isTeaValid(tea));
             });
+    }
+
+    function clearContainers() {
+        name.html('');
+        secondName.html('');
+        type.html('');
+        notes.html('');
     }
 }

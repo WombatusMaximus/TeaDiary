@@ -31,21 +31,17 @@ namespace TeaDiary.api
 
         private static void registerPageSpecificBundles(BundleCollection bundles)
         {
-            #region Teas Pages
-                bundles.Add(new ScriptBundle("~/bundles/Teas/Index").Include(
-                        "~/Scripts/App/Teas/TeasIndexPage.js"));
+            bundles.Add(new ScriptBundle("~/bundles/Teas/Index").Include(
+                        "~/Scripts/App/Teas/Index.js"));
 
-                bundles.Add(new ScriptBundle("~/bundles/Teas/Details").Include(
-                    "~/Scripts/App/Teas/TeasDetailsPage.js"));
+            bundles.Add(new ScriptBundle("~/bundles/Teas/Details").Include(
+                "~/Scripts/App/Teas/Details.js"));
 
-                bundles.Add(new ScriptBundle("~/bundles/Teas/Create").Include(
-                    "~/Scripts/App/Teas/TeasCreatePage.js"));
-            #endregion
+            bundles.Add(new ScriptBundle("~/bundles/Teas/Create").Include(
+                "~/Scripts/App/Teas/Create.js"));
 
-            #region Search pages
-                bundles.Add(new ScriptBundle("~/bundles/Search/Index").Include(
-                    "~/Scripts/App/Search/SearchIndexPage.js"));
-            #endregion
+            bundles.Add(new ScriptBundle("~/bundles/Search/Index").Include(
+                    "~/Scripts/App/Search/Index.js"));
         }
     }
 }
