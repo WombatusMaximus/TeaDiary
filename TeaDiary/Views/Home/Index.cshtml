@@ -7,13 +7,18 @@
     Actually not that convenient one because of the lack of time. But in any case it's working'
 </div>
 <div class="row">
-    <div class="col-md-8" id="TeaList">
+    <div class="col-md-8" >
+        <div id="TeaList">
 
+        </div>
+        <form action="@Url.Action(actionName: "Create", controllerName: "Teas", routeValues: new {area = ""})">
+            <button class="btn btn-primary" type="submit">Add tea</button>
+        </form>
     </div>
     <div class="col-md-4">
         <h1>Forgot something?</h1>
         <p>You can easily find the tea you want to remember with our best of the lines search engine!</p>
-        <p class="btn btn-default">@Html.ActionLink(linkText: "Search", actionName: "Index", controllerName: "Search", routeValues: new { area = "" }, htmlAttributes: null)</p>
+        <p class="btn btn-default">@Html.ActionLink(linkText: "Search", actionName: "Index", controllerName: "Search", routeValues: new {area = ""}, htmlAttributes: null)</p>
     </div>
 </div>
 
