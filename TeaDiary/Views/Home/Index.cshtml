@@ -2,10 +2,6 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>Extremely fancy and convenient tea diary made by Wombatus!</h1>
-    Actually not that convenient one because of the lack of time. But in any case it's working'
-</div>
 <div class="row">
     <div class="col-md-8" >
         <div id="TeaList">
@@ -21,6 +17,8 @@
         <p class="btn btn-default">@Html.ActionLink(linkText: "Search", actionName: "Index", controllerName: "Search", routeValues: new {area = ""}, htmlAttributes: null)</p>
     </div>
 </div>
+</br>
+
 
 @section scripts
 {
