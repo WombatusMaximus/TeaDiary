@@ -25,9 +25,9 @@
     }
 
     self.clearContainers = () => {
-        nameEditor.html('');
-        secondNameEditor.html('');
-        typeEditor.html('');
-        notesEditor.html('');
+        nameEditor.val('');
+        secondNameEditor.val('');
+        typeEditor.val('');
+        notesEditor.val('');
     }
 }

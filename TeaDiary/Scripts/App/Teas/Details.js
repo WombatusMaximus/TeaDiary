@@ -1,6 +1,14 @@
 ﻿$(document).ready(documentLoaded());
 
+var displayer;
+
 function documentLoaded() {
+    displayer = new teaDisplayer({
+        Name: '#Name',
+        SecondName: '#AdditionalName',
+        Type: '#Type',
+        Notes: '#Notes'
+    });
     if (isCreatePage) {
         createPageLoaded();
     } else {
@@ -10,14 +18,7 @@ function documentLoaded() {
 
 function detailsPageLoaded() {
     $("#Create").hide();
-
-    var displayer = new teaDisplayer({
-        Name: '#Name',
-        SecondName: '#AdditionalName',
-        Type: '#Type',
-        Notes: '#Notes'
-    });
-
+    
     displayer.loadAndDisplay(currentId,
         (success) => {
             if (!success) {
@@ -30,10 +31,7 @@ function createPageLoaded() {
     $("#Update").hide();
     $("#Delete").hide();
 
-    $("#Name").val("");
-    $("#AdditionalName").val("");
-    $("#Type").val("");
-    $("#Notes").val("");
+    displayer.clearContainers();
 }
 
 function showSuccessMessage() {
