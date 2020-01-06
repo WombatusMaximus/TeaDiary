@@ -33,7 +33,7 @@ function createPageLoaded() {
     $("#Update").hide();
     $("#Delete").hide();
 
-    displayer.clearContainers();
+    displayer.clearEditingFields();
 }
 
 function showSuccessMessage() {
@@ -53,7 +53,7 @@ function showFailureMessage() {
 }
 
 function onUpdateClick() {
-    var tea = displayer.buildTeaFromContainers(currentId);
+    var tea = displayer.buildTeaFromEditingFields(currentId);
 
     apiCommands.updateTea(
         tea,
@@ -75,7 +75,7 @@ function redirectToTeaList() {
 }
 
 function onCreateClick() {
-    var tea = displayer.buildTeaFromContainers(currentId);
+    var tea = displayer.buildTeaFromEditingFields(currentId);
 
     if (isTeaValid(tea)) {
         apiCommands.addTea(
