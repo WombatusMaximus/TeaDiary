@@ -9,7 +9,7 @@
             this.Id = id;
         }
 
-        public bool Create
+        public bool IsNewTea
         {
             get
             {

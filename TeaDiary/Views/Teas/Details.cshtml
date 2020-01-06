@@ -36,7 +36,7 @@
 {
     <script>
         var currentId = @Json.Encode(Model.Id);
-        var isCreatePage = @Json.Encode(Model.Create);
+        var isCreatePage = @Json.Encode(Model.IsNewTea);
     </script>
     @Scripts.Render("~/bundles/Teas/Details")
 }
