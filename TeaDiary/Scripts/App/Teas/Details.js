@@ -1,6 +1,4 @@
-﻿$(document).ready(() => {
-    documentLoaded();
-});
+﻿$(document).ready(documentLoaded());
 
 function documentLoaded() {
     if (isCreatePage) {
