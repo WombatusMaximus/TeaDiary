@@ -1,7 +1,10 @@
 ﻿function TeaCommands() {
     var self = this;
     self.delete = (id, successCallback, errorCallback) => {
-        popupConfirmation(null,
+        popupConfirmation(
+            {
+                 body: "Are you sure you want to delete this tea? You cannot undo this action"
+            },
             () => apiCommands.deleteTea(id, successCallback, errorCallback)
         );
     }
