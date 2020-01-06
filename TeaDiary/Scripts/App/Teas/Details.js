@@ -1,14 +1,15 @@
-﻿$(document).ready(documentLoaded());
+﻿$(document).ready(resetForm);
 
 var displayer;
 
-function documentLoaded() {
+function resetForm() {
     displayer = new TeaDisplayer({
         Name: '#Name',
         SecondName: '#AdditionalName',
         Type: '#Type',
         Notes: '#Notes'
     });
+
     if (isCreatePage) {
         createPageLoaded();
     } else {
@@ -18,8 +19,9 @@ function documentLoaded() {
 
 function detailsPageLoaded() {
     $("#Create").hide();
-    
-    displayer.loadAndDisplay(currentId,
+
+    displayer.loadAndDisplay(
+        currentId,
         (success) => {
             if (!success) {
                 redirectToTeaList();
@@ -51,22 +53,18 @@ function showFailureMessage() {
 }
 
 function onUpdateClick() {
-    tea = {
-        Id: currentId,
-        Type: $('#Type').val(),
-        Name: $('#Name').val(),
-        AdditionalName: $('#AdditionalName').val(),
-        Notes: $('#Notes').val()
-    }
+    var tea = displayer.buildTeaFromContainers(currentId);
 
-    apiCommands.updateTea(tea,
+    apiCommands.updateTea(
+        tea,
         (success) => showSuccessMessage(),
         (failure) => showFailureMessage()
     );
 }
 
 function onDeleteClick() {
-    apiCommands.deleteTea(currentId,
+    apiCommands.deleteTea(
+        currentId,
         (success) => redirectToTeaList(),
         (failure) => showFailureMessage()
     );
@@ -77,14 +75,11 @@ function redirectToTeaList() {
 }
 
 function onCreateClick() {
-    tea = {
-        Type: $('#Type').val(),
-        Name: $('#Name').val(),
-        AdditionalName: $('#AdditionalName').val(),
-        Notes: $('#Notes').val()
-    }
+    var tea = displayer.buildTeaFromContainers(currentId);
+
     if (isTeaValid(tea)) {
-        apiCommands.addTea(tea,
+        apiCommands.addTea(
+            tea,
             (id) => redirectToTeaDetailsPage(id)
         );
     } else {
@@ -97,5 +92,5 @@ function redirectToTeaDetailsPage(id) {
 }
 
 function onResetClick() {
-    documentLoaded();
+    resetForm();
 }

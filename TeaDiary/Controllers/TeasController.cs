@@ -22,7 +22,7 @@ namespace TeaDiary.Controllers
 
         public ActionResult Details(int id)
         {
-            return View("~/Views/Teas/Details.cshtml", new DisplayTeaViewModel (id));
+            return View("~/Views/Teas/Details.cshtml", new DisplayTeaViewModel(id));
         }
     }
 }

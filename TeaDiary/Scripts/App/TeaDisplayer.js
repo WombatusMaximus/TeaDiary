@@ -30,4 +30,15 @@
         typeEditor.val('');
         notesEditor.val('');
     }
+
+    self.buildTeaFromContainers = (id) => {
+        var tea = {
+            Id: id,
+            Type: typeEditor.val(),
+            Name: nameEditor.val(),
+            AdditionalName: secondNameEditor.val(),
+            Notes: notesEditor.val()
+        }
+        return tea;
+    }
 }

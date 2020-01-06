@@ -15,9 +15,7 @@
     }
 
     self.loadAndDisplay = () => {
-        apiQueries.getTeas((teas) => {
-            self.display(teas);
-        });
+        apiQueries.getTeas((teas) => self.display(teas));
     }
 
     self.clearContainer = () => {

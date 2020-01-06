@@ -10,7 +10,7 @@ using TeaDiary.domain.Models;
 
 namespace TeaDiary.dataaccess.Repositories
 {
-    public class TeaRepository:ITeaRepository
+    public class TeaRepository : ITeaRepository
     {
         private readonly TeaDiaryContext context;
 
@@ -26,9 +26,9 @@ namespace TeaDiary.dataaccess.Repositories
         public Tea GetById(int userId, int teaId)
         {
             var tea = context.Teas.Find(teaId);
-            if (tea==null||tea.UserId == userId)
+            if (tea == null || tea.UserId == userId)
             {
-                return tea; 
+                return tea;
             }
             else
             {
@@ -48,8 +48,8 @@ namespace TeaDiary.dataaccess.Repositories
         public IList<Tea> GetByType(int userId, string teaType, bool strict = true)
         {
             var teaList = context.Teas.Where(
-                tea => tea.UserId == userId &&
-                       (strict ? tea.Type == teaType : tea.Type.Contains(teaType))
+                tea => tea.UserId == userId
+                       && (strict ? tea.Type == teaType : tea.Type.Contains(teaType))
             ).ToList();
             return teaList;
         }
