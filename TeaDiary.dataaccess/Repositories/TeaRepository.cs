@@ -56,42 +56,30 @@ namespace TeaDiary.dataaccess.Repositories
 
         public int Add(Tea tea)
         {
-            if (tea.Id != null)
-            {
+            if (tea.Id!=null)
                 throw new InvalidOperationException();
-            }
-
-            if (tea.Name == null || tea.Type == null)
-            {
+            if (!isValid(tea))
                 throw new ValidationException();
-            }
 
             tea.UpdateDate = tea.CreationDate = DateTime.Now;
             var added = context.Teas.Add(tea);
             context.SaveChanges();
             tea.Id = added.Id;
-            if (tea.Id == null)
-            {
-                throw new Exception();
-            }
-            else
-            {
-                return tea.Id.GetValueOrDefault();
-            }
+            return tea.Id.GetValueOrDefault();
         }
 
         public bool Update(int userId, Tea tea)
         {
-            if (tea.Id == null || tea.Name == null || tea.Type == null)
-            {
-                return false;
-            }
+            if (tea.Id == null)
+                throw new InvalidOperationException();
+            if (!isValid(tea))
+                throw new ValidationException();
 
             var existing = context.Teas.Find(tea.Id);
-            if (existing == null || existing.UserId != userId)
-            {
+            if (existing == null)
                 return false;
-            }
+            if (existing.UserId != userId) 
+                throw new InvalidOperationException();
 
             tea.CreationDate = existing.CreationDate;
             tea.UpdateDate = DateTime.Now;
@@ -101,13 +89,24 @@ namespace TeaDiary.dataaccess.Repositories
             return true;
         }
 
-        public bool Delete(int userId, int id)
+        private bool isValid(Tea tea)
         {
-            var existing = context.Teas.Find(id);
-            if (existing == null || existing.UserId != userId)
+            if (tea.Name == null || tea.Type == null)
             {
                 return false;
             }
+
+            return true;
+        }
+
+        public bool Delete(int userId, int id)
+        {
+            var existing = context.Teas.Find(id);
+            if (existing == null)
+                return false;
+            
+            if (existing.UserId != userId)
+                throw new InvalidOperationException();
 
             context.Teas.Remove(existing);
             context.SaveChanges();
