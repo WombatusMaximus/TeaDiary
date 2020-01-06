@@ -13,9 +13,9 @@
     }
     function buildHeader(teas) {
         if (teas != null && teas.length > 0) {
-            return $("<h2>").html(TEA_LIST_TITLE);
+            return $("<h1>").html(TEA_LIST_TITLE);
         } else {
-            return $("<h2>").html(NO_TEAS_TITLE);
+            return $("<h1>").html(NO_TEAS_TITLE);
         }
     }
     function buildElement(tea) {

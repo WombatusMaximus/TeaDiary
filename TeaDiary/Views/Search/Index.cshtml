@@ -1,18 +1,32 @@
 ﻿@{
     Layout = "/Views/Shared/_Layout.cshtml";
 }
-<h1>Search</h1>
-<form>
-    <input type="text" id="SearchRequest" placeholder="Your search request" />
-    <select id="SearchType">
-        
-    </select>
-    <div><input type="checkbox" id="IsStrictSearch"> Strict search</div>
-    <a class="btn btn-default" id="Search" onclick="onSearchClick()">Search</a>
-</form>
-<div id="SearchResults">
-
+<div class="row">
+    <div class="col-md-4">
+        <h1>Search</h1>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="text" id="SearchRequest" placeholder="Your search request" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    <select id="SearchType" class="form-control"></select>
+                </div>
+                <div class="col-md-6">
+                    <label>
+                        <input type="checkbox" id="IsStrictSearch" class=""> Strict search
+                    </label>
+                </div>
+            </div>
+            <button class="btn btn-default" id="Search" onclick="onSearchClick()" type="button">Search</button>
+        </form>
+    </div>
+    <div id="SearchResults" class="col-md-8">
+    </div>
 </div>
+
 
 @section scripts
 {

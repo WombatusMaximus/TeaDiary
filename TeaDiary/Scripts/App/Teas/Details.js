@@ -39,19 +39,19 @@ function createPageLoaded() {
 }
 
 function showSuccessMessage() {
-    $("#SuccessfulAlarmbox").hide();
-    $("#SuccessfulAlarmbox").removeClass("btn-danger");
-    $("#SuccessfulAlarmbox").addClass("btn-default");
-    $("#SuccessfulAlarmbox").text(SUCCESS_TEXT);
-    $("#SuccessfulAlarmbox").show();
+    $("#Alarmbox").hide();
+    $("#Alarmbox").removeClass("alert-danger");
+    $("#Alarmbox").addClass("alert-success");
+    $("#Alarmbox").html(SUCCESS_TEXT);
+    $("#Alarmbox").show();
 }
 
 function showFailureMessage() {
-    $("#SuccessfulAlarmbox").hide();
-    $("#SuccessfulAlarmbox").removeClass("btn-default");
-    $("#SuccessfulAlarmbox").addClass("btn-danger");
-    $("#SuccessfulAlarmbox").text(FAILURE_TEXT);
-    $("#SuccessfulAlarmbox").show();
+    $("#Alarmbox").hide();
+    $("#Alarmbox").removeClass("alert-success");
+    $("#Alarmbox").addClass("alert-danger");
+    $("#Alarmbox").html(FAILURE_TEXT);
+    $("#Alarmbox").show();
 }
 
 function onUpdateClick() {
@@ -64,10 +64,10 @@ function onUpdateClick() {
     }
 
     apiCommands.updateTea(tea,
-        success => {
+        (success) => {
             showSuccessMessage();
         },
-        failure => {
+        (failure) => {
             showFailureMessage();
         }
     );
