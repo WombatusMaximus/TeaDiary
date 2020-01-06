@@ -5,7 +5,8 @@
         $.ajax("/api/tea/",
             {
                 method: 'POST',
-                data: tea
+                data: tea,
+                error: errorCallback
             }
         ).done((response) => {
             successCallback(response);
@@ -16,24 +17,26 @@
         $.ajax("/api/tea/",
             {
                 method: 'PUT',
-                data: tea
-            }
-        ).done((response) => {
-            if (response) {
-                successCallback();
-            } else {
-                errorCallback();
-            }
-        });
+                data: tea,
+                error: errorCallback
+            })
+            .done((succeeded) => {
+                if (succeeded) {
+                    successCallback();
+                } else {
+                    errorCallback();
+                }
+            });
     }
 
     self.deleteTea = (id, successCallback, errorCallback) => {
         $.ajax("/api/tea/" + id,
             {
-                method: 'DELETE'
+                method: 'DELETE',
+                error: errorCallback
             }
-        ).done((response) => {
-            if (response) {
+        ).done((succeeded) => {
+            if (succeeded) {
                 successCallback();
             } else {
                 errorCallback();
