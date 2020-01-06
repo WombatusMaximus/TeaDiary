@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12" id="TeaList">
+
+    </div>
+    <div class="col-md-12">
+        <form action="@Url.Action(actionName: "Create", controllerName: "Teas", routeValues: new {area = ""})">
+            <button class="btn btn-primary" type="submit">Add tea</button>
+        </form>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/Teas/Index")
+}

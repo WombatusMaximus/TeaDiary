@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using TeaDiary.business.Interfaces;
@@ -9,7 +10,7 @@ using TeaDiary.domain.Models;
 
 namespace TeaDiary.dataaccess.Repositories
 {
-    public class TeaRepository:ITeaRepository
+    public class TeaRepository : ITeaRepository
     {
         private readonly TeaDiaryContext context;
 
@@ -24,74 +25,61 @@ namespace TeaDiary.dataaccess.Repositories
 
         public Tea GetById(int userId, int teaId)
         {
-            var result = context.Teas.Find(teaId);
-            if (result==null||result.UserId == userId)
+            var tea = context.Teas.Find(teaId);
+            if (tea == null || tea.UserId == userId)
             {
-                return result; 
+                return tea;
             }
             else
             {
-                throw new InvalidOperationException("Sorry, it looks like your user permissions are not quite right to be able to see this, thank you, have a good day!");
+                return null;
             }
         }
 
-        public IList<Tea> GetByName(int userId, string teaName, bool isStrictSearch = true)
+        public IList<Tea> GetByName(int userId, string teaName, bool strict = true)
         {
-            if (isStrictSearch)
-            {
-                return context.Teas.Where(tea => tea.Name == teaName && tea.UserId == userId).ToList();
-            }
-            else
-            {
-                return context.Teas.Where(tea => tea.Name.Contains(teaName) && tea.UserId == userId).ToList();
-            }
+            var teaList = context.Teas.Where(
+                tea => tea.UserId == userId &&
+                       (strict ? tea.Name == teaName : tea.Name.Contains(teaName))
+                ).ToList();
+            return teaList;
         }
 
-        public IList<Tea> GetByType(int userId, string teaType, bool isStrictSearch = true)
+        public IList<Tea> GetByType(int userId, string teaType, bool strict = true)
         {
-            if (isStrictSearch)
-            {
-                return context.Teas.Where(tea => tea.Type==teaType && tea.UserId == userId).ToList();
-            }
-            else
-            {
-                return context.Teas.Where(tea => tea.Type.Contains(teaType) && tea.UserId == userId).ToList();
-            }
+            var teaList = context.Teas.Where(
+                tea => tea.UserId == userId
+                       && (strict ? tea.Type == teaType : tea.Type.Contains(teaType))
+            ).ToList();
+            return teaList;
         }
 
         public int Add(Tea tea)
         {
-            if (tea.Id != null)
-            {
+            if (tea.Id!=null)
                 throw new InvalidOperationException();
-            }
-            
+            if (!isValid(tea))
+                throw new ValidationException();
+
             tea.UpdateDate = tea.CreationDate = DateTime.Now;
             var added = context.Teas.Add(tea);
             context.SaveChanges();
             tea.Id = added.Id;
-            if (tea.Id == null)
-            {
-                throw new Exception();
-            }
-            else
-            {
-                return tea.Id.GetValueOrDefault();
-            }
+            return tea.Id.GetValueOrDefault();
         }
 
         public bool Update(int userId, Tea tea)
         {
             if (tea.Id == null)
-            {
-                return false;
-            }
+                throw new InvalidOperationException();
+            if (!isValid(tea))
+                throw new ValidationException();
 
             var existing = context.Teas.Find(tea.Id);
-            if (existing == null || existing.UserId != userId)
-            {
+            if (existing == null)
                 return false;
-            }
+            if (existing.UserId != userId) 
+                throw new InvalidOperationException();
 
             tea.CreationDate = existing.CreationDate;
             tea.UpdateDate = DateTime.Now;
@@ -101,13 +89,24 @@ namespace TeaDiary.dataaccess.Repositories
             return true;
         }
 
-        public bool Delete(int userId, int id)
+        private bool isValid(Tea tea)
         {
-            var existing = context.Teas.Find(id);
-            if (existing == null || existing.UserId != userId)
+            if (tea.Name == null || tea.Type == null)
             {
                 return false;
             }
+
+            return true;
+        }
+
+        public bool Delete(int userId, int id)
+        {
+            var existing = context.Teas.Find(id);
+            if (existing == null)
+                return false;
+            
+            if (existing.UserId != userId)
+                throw new InvalidOperationException();
 
             context.Teas.Remove(existing);
             context.SaveChanges();

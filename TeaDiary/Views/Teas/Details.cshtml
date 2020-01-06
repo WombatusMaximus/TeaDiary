@@ -1,0 +1,42 @@
+﻿@model TeaDiary.api.Models.DisplayTeaViewModel
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <h2>Here is your tea:</h2>
+    <form class="col-md-4">
+        <div class="form-group">
+            <label for="Name" class="control-label">Tea name</label>
+            <input type="text" id="Name" placeholder="Name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="AdditionalName">Additional tea name</label>
+            <input type="text" id="AdditionalName" placeholder="Additional tea name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="Type">Tea type</label>
+            <input type="text" id="Type" placeholder="Tea type" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="Notes">Notes</label>
+            <textarea id="Notes" placeholder="Your notes" wrap="soft" class="form-control"></textarea>
+        </div>
+        <button class="btn btn-primary" id="Create" onclick="onCreateClick()" type="button">Save</button>
+        <button class="btn btn-primary" id="Update" onclick="onUpdateClick()" type="button">Save</button>
+        <button class="btn btn-danger" id="Reset" onclick="onResetClick()" type="button">Reset</button>
+        <button class="btn btn-danger" id="Delete" onclick="onDeleteClick()" type="button">Delete</button>
+    </form>
+</div>
+<div class="row">
+    <div class="alert col-md-4" id="Alarmbox" style="display: none">FUCK</div>
+</div>
+
+@section scripts
+{
+    <script>
+        var currentId = @Json.Encode(Model.Id);
+        var isCreatePage = @Json.Encode(Model.IsNewTea);
+    </script>
+    @Scripts.Render("~/bundles/Teas/Details")
+}

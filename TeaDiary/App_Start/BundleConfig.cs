@@ -19,9 +19,26 @@ namespace TeaDiary.api
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/application").Include(
+                "~/Scripts/App/*.js"));
+
+            registerPageSpecificBundles(bundles);
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+        }
+
+        private static void registerPageSpecificBundles(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/bundles/Teas/Index").Include(
+                        "~/Scripts/App/Teas/Index.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/Teas/Details").Include(
+                "~/Scripts/App/Teas/Details.js"));
+            
+            bundles.Add(new ScriptBundle("~/bundles/Search/Index").Include(
+                    "~/Scripts/App/Search/Index.js"));
         }
     }
 }

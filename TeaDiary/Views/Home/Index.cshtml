@@ -1,24 +1,24 @@
 ﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Extremely fancy and convenient tea diary made by Wombatus!</h1>
+    Actually not that convenient one because of the lack of time. But in any case it's working'
 </div>
 <div class="row">
     <div class="col-md-4">
         <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+        <p>
+            Start with adding new tea to your diary:
+        </p>
+        <p class="btn btn-default">@Html.ActionLink(linkText: "Add tea", actionName: "Create", controllerName: "Teas", routeValues: new { area = "" }, htmlAttributes: null)</p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+        <h2>Re-experience</h2>
+        <p>Look through the history of your experience:</p>
+        <p class="btn btn-default">@Html.ActionLink(linkText: "My teas", actionName: "Index", controllerName: "Teas", routeValues: new {area = ""}, htmlAttributes: null)</p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+        <h2>Forgot something?</h2>
+        <p>You can easily find the tea you want to remember with our best of the lines search engine!</p>
+        <p class="btn btn-default">@Html.ActionLink(linkText: "Search", actionName: "Index", controllerName: "Search", routeValues: new { area = "" }, htmlAttributes: null)</p>
     </div>
 </div>
+
