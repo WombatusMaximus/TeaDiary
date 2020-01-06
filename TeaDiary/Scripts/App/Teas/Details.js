@@ -76,11 +76,10 @@ function onUpdateClick() {
 function onDeleteClick() {
     apiCommands.deleteTea(currentId,
         (success) => {
-            if (success) {
-                redirectToTeaList();
-            } else {
-                showFailureMessage();
-            }
+            redirectToTeaList();
+        },
+        (failure) => {
+            showFailureMessage();
         });
 }
 
