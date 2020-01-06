@@ -5,6 +5,7 @@
     var secondNameEditor = $(self.editingFields.SecondName);
     var typeEditor = $(self.editingFields.Type);
     var notesEditor = $(self.editingFields.Notes);
+
     self.display = (tea) => {
         clearContainers();
         nameEditor.val(tea.Name);
@@ -23,7 +24,7 @@
             });
     }
 
-    function clearContainers() {
+    self.clearContainers = () => {
         nameEditor.html('');
         secondNameEditor.html('');
         typeEditor.html('');
