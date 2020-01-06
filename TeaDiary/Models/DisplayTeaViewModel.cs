@@ -9,12 +9,6 @@
             this.Id = id;
         }
 
-        public bool IsNewTea
-        {
-            get
-            {
-                return (Id == null);
-            }
-        }
+        public bool IsNewTea => (Id == null);
     }
 }

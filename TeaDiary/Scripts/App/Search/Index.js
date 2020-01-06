@@ -1,17 +1,27 @@
-﻿$(document).ready(documentLoaded());
+﻿$(document).ready(documentLoaded);
+
+var displayer;
 
 function documentLoaded() {
-    $("#SearchType").append($("<option>").val(SEARCT_TYPE.NAME).html("By " + SEARCT_TYPE.NAME));
-    $("#SearchType").append($("<option>").val(SEARCT_TYPE.TYPE).html("By " + SEARCT_TYPE.TYPE));
+    displayer = new TeaListDisplayer("#SearchResults");
+
+    $("#SearchType")
+        .append($("<option>")
+            .val(SEARCT_TYPE.NAME)
+            .html("By " + SEARCT_TYPE.NAME));
+    $("#SearchType")
+        .append($("<option>")
+            .val(SEARCT_TYPE.TYPE)
+            .html("By " + SEARCT_TYPE.TYPE));
 }
 
 function onSearchClick() {
     var search = $("#SearchType").val() === SEARCT_TYPE.NAME ? apiQueries.searchByName : apiQueries.searchByType;
 
-    search($("#SearchRequest").val(),
+    search(
+        $("#SearchRequest").val(),
         $("#IsStrictSearch").prop("checked"),
         (teaList) => {
-            var displayer = new TeaListDisplayer("#SearchResults");
             displayer.display(teaList);
         });
 }

@@ -7,7 +7,7 @@
     var notesEditor = $(self.editingFields.Notes);
 
     self.display = (tea) => {
-        self.clearContainers();
+        self.clearEditingFields();
         nameEditor.val(tea.Name);
         secondNameEditor.val(tea.AdditionalName);
         typeEditor.val(tea.Type);
@@ -24,10 +24,21 @@
             });
     }
 
-    self.clearContainers = () => {
+    self.clearEditingFields = () => {
         nameEditor.val('');
         secondNameEditor.val('');
         typeEditor.val('');
         notesEditor.val('');
+    }
+
+    self.buildTeaFromEditingFields = (id) => {
+        var tea = {
+            Id: id,
+            Type: typeEditor.val(),
+            Name: nameEditor.val(),
+            AdditionalName: secondNameEditor.val(),
+            Notes: notesEditor.val()
+        }
+        return tea;
     }
 }
