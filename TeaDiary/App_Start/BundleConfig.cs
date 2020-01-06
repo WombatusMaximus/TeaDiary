@@ -39,6 +39,9 @@ namespace TeaDiary.api
             
             bundles.Add(new ScriptBundle("~/bundles/Search/Index").Include(
                     "~/Scripts/App/Search/Index.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/Home/Index").Include(
+                "~/Scripts/App/Home/Index.js"));
         }
     }
 }

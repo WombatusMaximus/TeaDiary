@@ -1,24 +1,23 @@
-﻿<div class="jumbotron">
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
     <h1>Extremely fancy and convenient tea diary made by Wombatus!</h1>
     Actually not that convenient one because of the lack of time. But in any case it's working'
 </div>
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            Start with adding new tea to your diary:
-        </p>
-        <p class="btn btn-default">@Html.ActionLink(linkText: "Add tea", actionName: "Create", controllerName: "Teas", routeValues: new { area = "" }, htmlAttributes: null)</p>
+    <div class="col-md-8" id="TeaList">
+
     </div>
     <div class="col-md-4">
-        <h2>Re-experience</h2>
-        <p>Look through the history of your experience:</p>
-        <p class="btn btn-default">@Html.ActionLink(linkText: "My teas", actionName: "Index", controllerName: "Teas", routeValues: new {area = ""}, htmlAttributes: null)</p>
-    </div>
-    <div class="col-md-4">
-        <h2>Forgot something?</h2>
+        <h1>Forgot something?</h1>
         <p>You can easily find the tea you want to remember with our best of the lines search engine!</p>
         <p class="btn btn-default">@Html.ActionLink(linkText: "Search", actionName: "Index", controllerName: "Search", routeValues: new { area = "" }, htmlAttributes: null)</p>
     </div>
 </div>
 
+@section scripts
+{
+    @Scripts.Render("~/bundles/Home/Index")
+}
