@@ -3,7 +3,7 @@
 var displayer;
 
 function documentLoaded() {
-    displayer = new teaDisplayer({
+    displayer = new TeaDisplayer({
         Name: '#Name',
         SecondName: '#AdditionalName',
         Type: '#Type',

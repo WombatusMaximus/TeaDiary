@@ -1,4 +1,4 @@
-﻿function teaDisplayer(teaEditingFields) {
+﻿function TeaDisplayer(teaEditingFields) {
     var self = this;
     self.editingFields = teaEditingFields;
     var nameEditor = $(self.editingFields.Name);
@@ -7,7 +7,7 @@
     var notesEditor = $(self.editingFields.Notes);
 
     self.display = (tea) => {
-        clearContainers();
+        self.clearContainers();
         nameEditor.val(tea.Name);
         secondNameEditor.val(tea.AdditionalName);
         typeEditor.val(tea.Type);

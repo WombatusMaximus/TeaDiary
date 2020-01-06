@@ -1,4 +1,4 @@
-﻿function teaListDisplayer(container) {
+﻿function TeaListDisplayer(container) {
     var self = this;
     self.container = $(container);
     self.display = (teas) => {

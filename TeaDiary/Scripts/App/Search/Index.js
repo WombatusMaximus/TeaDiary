@@ -11,7 +11,7 @@ function onSearchClick() {
     search($("#SearchRequest").val(),
         $("#IsStrictSearch").prop("checked"),
         (teaList) => {
-            var displayer = new teaListDisplayer("#SearchResults");
+            var displayer = new TeaListDisplayer("#SearchResults");
             displayer.display(teaList);
         });
 }
