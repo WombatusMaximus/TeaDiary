@@ -62,23 +62,16 @@ function onUpdateClick() {
     }
 
     apiCommands.updateTea(tea,
-        (success) => {
-            showSuccessMessage();
-        },
-        (failure) => {
-            showFailureMessage();
-        }
+        (success) => showSuccessMessage(),
+        (failure) => showFailureMessage()
     );
 }
 
 function onDeleteClick() {
     apiCommands.deleteTea(currentId,
-        (success) => {
-            redirectToTeaList();
-        },
-        (failure) => {
-            showFailureMessage();
-        });
+        (success) => redirectToTeaList(),
+        (failure) => showFailureMessage()
+    );
 }
 
 function redirectToTeaList() {
@@ -94,9 +87,10 @@ function onCreateClick() {
     }
     if (isTeaValid(tea)) {
         apiCommands.addTea(tea,
-            (id) => {
-                redirectToTeaDetailsPage(id);
-            });
+            (id) => redirectToTeaDetailsPage(id)
+        );
+    } else {
+        showFailureMessage();
     }
 }
 

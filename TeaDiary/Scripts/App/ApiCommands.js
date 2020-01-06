@@ -6,11 +6,10 @@
             {
                 method: 'POST',
                 data: tea,
-                error: errorCallback
+                error: errorCallback,
+                success: (response) => successCallback(response)
             }
-        ).done((response) => {
-            successCallback(response);
-        });
+        );
     }
 
     self.updateTea = (tea, successCallback, errorCallback) => {
@@ -18,13 +17,13 @@
             {
                 method: 'PUT',
                 data: tea,
-                error: errorCallback
-            })
-            .done((succeeded) => {
-                if (succeeded) {
-                    successCallback();
-                } else {
-                    errorCallback();
+                error: errorCallback,
+                success: (succeeded) => {
+                    if (succeeded) {
+                        successCallback();
+                    } else {
+                        errorCallback();
+                    }
                 }
             });
     }
@@ -33,14 +32,15 @@
         $.ajax("/api/tea/" + id,
             {
                 method: 'DELETE',
-                error: errorCallback
+                error: errorCallback,
+                success: (succeeded) => {
+                    if (succeeded) {
+                        successCallback();
+                    } else {
+                        errorCallback();
+                    }
+                }
             }
-        ).done((succeeded) => {
-            if (succeeded) {
-                successCallback();
-            } else {
-                errorCallback();
-            }
-        });
+        );
     }
 }
