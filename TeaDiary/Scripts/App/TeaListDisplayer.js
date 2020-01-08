@@ -1,6 +1,7 @@
 ﻿function TeaListDisplayer(container) {
     var self = this;
     self.container = $(container);
+
     self.display = (teas) => {
         self.clearContainer();
         setContainerLoading(true);
@@ -39,15 +40,17 @@
     }
 
     function buildElement(tea) {
-        var teaString = $('<a>')
-            .attr('href', TeaDetailsPageLink + tea.Id)
-            .text(tea.Name + ' (' + tea.Type + ')');
+        var teaString = $('<div>')
+            .html($("<a>")
+                .attr('href', TEA_DETAILS_PAGE_LINK + tea.Id)
+                .attr("id", TEA_ELEMENT_ID_PREFIX + tea.Id)
+                .text(tea.Name + ' (' + tea.Type + ')')
+            );
         return teaString;
     }
 
     function appendElement(text) {
         self.container.append(text);
-        self.container.append($('</br>'));
     }
 
     function displayTea(tea) {

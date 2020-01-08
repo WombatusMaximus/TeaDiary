@@ -199,6 +199,7 @@
     <Content Include="Scripts\App\Teas\Index.js" />
     <Content Include="Scripts\App\Search\Index.js" />
     <Content Include="Scripts\App\ApiCommands.js" />
+    <Content Include="Scripts\App\PopupConfirmation.js" />
     <Content Include="Scripts\App\validation.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

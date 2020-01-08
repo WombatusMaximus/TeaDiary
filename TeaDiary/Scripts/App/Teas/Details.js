@@ -33,7 +33,7 @@ function createPageLoaded() {
     $("#Update").hide();
     $("#Delete").hide();
 
-    displayer.clearContainers();
+    displayer.clearEditingFields();
 }
 
 function showSuccessMessage() {
@@ -53,7 +53,7 @@ function showFailureMessage() {
 }
 
 function onUpdateClick() {
-    var tea = displayer.buildTeaFromContainers(currentId);
+    var tea = displayer.buildTeaFromEditingFields(currentId);
 
     apiCommands.updateTea(
         tea,
@@ -63,19 +63,16 @@ function onUpdateClick() {
 }
 
 function onDeleteClick() {
-    apiCommands.deleteTea(
-        currentId,
-        (success) => redirectToTeaList(),
-        (failure) => showFailureMessage()
-    );
+    var teaCommands = new TeaCommands();
+    teaCommands.delete(currentId, redirectToTeaList, showFailureMessage);
 }
 
 function redirectToTeaList() {
-    $(location).attr('href', TeasPageLink);
+    $(location).attr('href', TEAS_PAGE_LINK);
 }
 
 function onCreateClick() {
-    var tea = displayer.buildTeaFromContainers(currentId);
+    var tea = displayer.buildTeaFromEditingFields(currentId);
 
     if (isTeaValid(tea)) {
         apiCommands.addTea(
@@ -88,7 +85,7 @@ function onCreateClick() {
 }
 
 function redirectToTeaDetailsPage(id) {
-    $(location).attr('href', TeaDetailsPageLink + id);
+    $(location).attr('href', TEA_DETAILS_PAGE_LINK + id);
 }
 
 function onResetClick() {
