@@ -190,6 +190,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\App\constants.js" />
+    <Content Include="Scripts\App\TeaCommands.js" />
     <Content Include="Scripts\App\TeaDisplayer.js" />
     <Content Include="Scripts\App\TeaListDisplayer.js" />
     <Content Include="Scripts\App\Teas\Details.js" />
@@ -197,6 +198,7 @@
     <Content Include="Scripts\App\Teas\Index.js" />
     <Content Include="Scripts\App\Search\Index.js" />
     <Content Include="Scripts\App\ApiCommands.js" />
+    <Content Include="Scripts\App\PopupConfirmation.js" />
     <Content Include="Scripts\App\validation.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
