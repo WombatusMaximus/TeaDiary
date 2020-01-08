@@ -68,7 +68,7 @@ function onDeleteClick() {
 }
 
 function redirectToTeaList() {
-    $(location).attr('href', TeasPageLink);
+    $(location).attr('href', TEAS_PAGE_LINK);
 }
 
 function onCreateClick() {
@@ -85,7 +85,7 @@ function onCreateClick() {
 }
 
 function redirectToTeaDetailsPage(id) {
-    $(location).attr('href', TeaDetailsPageLink + id);
+    $(location).attr('href', TEA_DETAILS_PAGE_LINK + id);
 }
 
 function onResetClick() {

@@ -1,7 +1,7 @@
 ﻿function TeaListDisplayer(container) {
     var self = this;
     self.container = $(container);
-    var teaElementId = "displayedTeaElementNumber";
+    
     self.display = (teas) => {
         self.clearContainer();
         setContainerLoading(true);
@@ -42,8 +42,8 @@
     function buildElement(tea) {
         var teaString = $('<div>')
             .html($("<a>")
-                .attr('href', TeaDetailsPageLink + tea.Id)
-                .attr("id", teaElementId+tea.Id)
+                .attr('href', TEA_DETAILS_PAGE_LINK + tea.Id)
+                .attr("id", TEA_ELEMENT_ID_PREFIX + tea.Id)
                 .text(tea.Name + ' (' + tea.Type + ')')
             );
         return teaString;
