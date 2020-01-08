@@ -1,7 +1,7 @@
 ﻿function TeaListDisplayer(container) {
     var self = this;
     self.container = $(container);
-    
+
     self.display = (teas) => {
         self.clearContainer();
         setContainerLoading(true);
@@ -51,7 +51,6 @@
 
     function appendElement(text) {
         self.container.append(text);
-        
     }
 
     function displayTea(tea) {

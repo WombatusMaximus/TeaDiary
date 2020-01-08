@@ -16,7 +16,8 @@
             confirm: "Confirm",
             cancel: "Cancel"
         }
-        return Object.assign({},defaults,content);
+
+        return Object.assign({}, defaults, content);
     }
 }
 
