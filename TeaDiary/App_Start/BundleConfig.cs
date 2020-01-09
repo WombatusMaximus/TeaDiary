@@ -27,6 +27,9 @@ namespace TeaDiary.api
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/App/css").Include(
+                "~/Content/App/*.css"));
         }
 
         private static void registerPageSpecificBundles(BundleCollection bundles)
@@ -43,5 +46,6 @@ namespace TeaDiary.api
             bundles.Add(new ScriptBundle("~/bundles/Home/Index").Include(
                 "~/Scripts/App/Home/Index.js"));
         }
+
     }
 }
