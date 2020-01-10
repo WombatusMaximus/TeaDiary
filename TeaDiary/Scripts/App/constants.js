@@ -19,7 +19,7 @@ const TEA_ELEMENT = {
     LINK: "Link"
 }
 
-const MOAR = ">> More";
+const MOAR = "More...";
 
 const NUMBER = "#";
 const NAME = "Name";
