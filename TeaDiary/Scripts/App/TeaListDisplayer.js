@@ -5,7 +5,7 @@
     var teaListTable = $("<table>");
     var teaListTableHead = $("<thead>");
     var teaListTableBody = $("<tbody>");
-    var teaNumber = 1;
+    var nextTeaNumber = 1;
     
     self.display = (teas) => {
         self.setupContainer();
@@ -34,7 +34,7 @@
         teaListTableHead.html(buildTeaTableHeader());
         teaListTableBody.html("");
 
-        teaNumber = 1;
+        nextTeaNumber = 1;
 
         teaListTable.removeClass();
         teaListTable.addClass("table table-hover");
@@ -83,8 +83,8 @@
     }
 
     function displayTea(tea) {
-        var teaLine = buildElement(tea, teaNumber);
-        teaNumber++;
+        var teaLine = buildElement(tea, nextTeaNumber);
+        nextTeaNumber++;
         teaListTableBody.append(teaLine);
     }
 

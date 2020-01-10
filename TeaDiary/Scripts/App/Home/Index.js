@@ -4,10 +4,10 @@ var displayer;
 
 function documentLoaded() {
     displayer = new TeaListDisplayer({
-        title:"#TeaListTitle",
-        body:"#TeaList"
+        title: "#TeaListTitle",
+        body: "#TeaList"
     });
-    
+
     $("#SearchType")
         .append($("<option>")
             .val(SEARCT_TYPE.NAME)
@@ -29,8 +29,7 @@ function onSearchClick() {
         search(
             $("#SearchRequest").val(),
             $("#IsStrictSearch").prop("checked"),
-            (teaList) => {
-                displayer.display(teaList);
-            });
+            (teaList) => displayer.display(teaList)
+        );
     }
 }
