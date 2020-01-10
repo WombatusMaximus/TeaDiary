@@ -53,7 +53,9 @@
     }
 
     function buildTitle(teas) {
-        return isEmpty(teas) ? NO_TEAS_TITLE : TEA_LIST_TITLE;
+        return isEmpty(teas)
+            ? $("<h1>").html(NO_TEAS_TITLE)
+            : $("<h1>").html(TEA_LIST_TITLE);
     }
 
     function displayTitle(teas) {
