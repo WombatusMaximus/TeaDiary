@@ -8,14 +8,12 @@
     var teaNumber = 1;
     
     self.display = (teas) => {
-        self.resetContainer();
+        self.setupContainer();
         setContainerLoading(true);
 
-        teaListTitle.html(buildTitle(teas));
+        displayTitle(teas);
 
-        teas.forEach((tea) => {
-            displayTea(tea);
-        });
+        teas.forEach(displayTea);
 
         if (isEmpty(teas)) {
             teaListTable.hide();
@@ -30,7 +28,7 @@
         apiQueries.getTeas((teas) => self.display(teas));
     }
 
-    self.resetContainer = () => {
+    self.setupContainer = () => {
         self.container.html("");
         teaListTable.html("");
         teaListTableHead.html(buildTeaTableHeader());
@@ -56,11 +54,11 @@
     }
 
     function buildTitle(teas) {
-        if (!isEmpty(teas)) {
-            return TEA_LIST_TITLE;
-        } else {
-            return NO_TEAS_TITLE;
-        }
+        return isEmpty(teas) ? NO_TEAS_TITLE : TEA_LIST_TITLE;
+    }
+
+    function displayTitle(teas) {
+        teaListTitle.html(buildTitle(teas));
     }
 
     function buildElement(tea, number) {
