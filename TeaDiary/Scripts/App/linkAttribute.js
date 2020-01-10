@@ -1,3 +1,3 @@
-﻿$(document).on('click', '.link', function () {
-    $(location).attr('href', $(this).attr('href'));
+﻿$(document).on('click', '[link]', function () {
+    $(location).attr('href', $(this).attr('link'));
 });

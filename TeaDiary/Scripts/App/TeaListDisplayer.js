@@ -71,9 +71,9 @@
         var teaType = $("<td>")
             .text(tea.Type);
         var teaLink = $("<td>")
-            .addClass("link text-info")
+            .addClass("text-info")
             .attr("id", TEA_ELEMENT.PREFIX + TEA_ELEMENT.LINK + tea.Id)
-            .attr('href', TEA_DETAILS_PAGE_LINK + tea.Id)
+            .attr('link', TEA_DETAILS_PAGE_LINK + tea.Id)
             .text(MOAR);
 
         teaElement.append(teaNumber);
