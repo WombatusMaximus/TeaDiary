@@ -2,21 +2,25 @@
     var self = this;
     self.container = $(container);
     var teaListTable = $("<table>");
-    var teaListContainer = $("<tbody>");
-    var entityCounter = 1;
+    var teaListTableHead = $("<thead>");
+    var teaListTableBody = $("<tbody>");
+    var teaListTitle = $("<h1>");
+    var teaNumber = 1;
     
     self.display = (teas) => {
-        self.clearContainer();
+        self.resetContainer();
         setContainerLoading(true);
-        
-        displayHeader(teas);
+
+        teaListTitle.html(buildTitle(teas));
+
         teas.forEach((tea) => {
             displayTea(tea);
         });
 
-        appendElement(teaListContainer, teaListTable);
-        if (!isEmpty(teas)) {
-            appendElement(teaListTable, self.container);
+        if (isEmpty(teas)) {
+            teaListTable.hide();
+        } else {
+            teaListTable.show();
         }
 
         setContainerLoading(false);
@@ -26,13 +30,21 @@
         apiQueries.getTeas((teas) => self.display(teas));
     }
 
-    self.clearContainer = () => {
+    self.resetContainer = () => {
         self.container.html("");
         teaListTable.html("");
-        teaListContainer.html("");
-        entityCounter = 1;
-        
+        teaListTableHead.html(buildTeaTableHeader());
+        teaListTableBody.html("");
+
+        teaNumber = 1;
+
+        teaListTable.removeClass();
         teaListTable.addClass("table table-hover");
+        teaListTable.append(teaListTableHead);
+        teaListTable.append(teaListTableBody);
+
+        self.container.append(teaListTitle);
+        self.container.append(teaListTable);
     }
 
     function setContainerLoading(isLoading) {
@@ -43,19 +55,19 @@
         }
     }
 
-    function buildHeader(teas) {
+    function buildTitle(teas) {
         if (!isEmpty(teas)) {
-            return $("<h1>").html(TEA_LIST_TITLE);
+            return TEA_LIST_TITLE;
         } else {
-            return $("<h1>").html(NO_TEAS_TITLE);
+            return NO_TEAS_TITLE;
         }
     }
 
-    function buildElement(tea, counter) {
+    function buildElement(tea, number) {
         var teaElement = $('<tr>')
             .attr("id", TEA_ELEMENT.PREFIX + TEA_ELEMENT.ID + tea.Id);
         var teaNumber = $("<td>")
-            .text(counter);
+            .text(number);
         var teaName = $("<td>")
             .text(tea.Name);
         var teaType = $("<td>")
@@ -66,46 +78,36 @@
             .attr('href', TEA_DETAILS_PAGE_LINK + tea.Id)
             .text(MOAR);
 
-        appendElement(teaNumber, teaElement);
-        appendElement(teaName, teaElement);
-        appendElement(teaType, teaElement);
-        appendElement(teaLink, teaElement);
+        teaElement.append(teaNumber);
+        teaElement.append(teaName);
+        teaElement.append(teaType);
+        teaElement.append(teaLink);
         return teaElement;
     }
 
-    function appendElement(text, container) {
-        var config = (container == null) ? teaListContainer : container;
-        $(config).append(text);
-    }
-
     function displayTea(tea) {
-        var teaLine = buildElement(tea, entityCounter);
-        entityCounter++;
-        appendElement(teaLine);
+        var teaLine = buildElement(tea, teaNumber);
+        teaNumber++;
+        teaListTableBody.append(teaLine);
     }
 
-    function displayHeader(teas) {
-        var header = buildHeader(teas);
-        appendElement(header, container);
+    function buildTeaTableHeader(teas) {
+        var tableHeader = $("<tr>");
 
-        var tableHeader = $("<thead>");
-        var tableHeaderList = $("<tr>");
-        
-        tableHeaderList.append(
+        tableHeader.append(
             $("<th>").text(NUMBER)
         );
-        tableHeaderList.append(
+        tableHeader.append(
             $("<th>").text(NAME)
         );
-        tableHeaderList.append(
+        tableHeader.append(
             $("<th>").text(TYPE)
         );
-        tableHeaderList.append(
+        tableHeader.append(
             $("<th>").text(LINK)
         );
 
-        appendElement(tableHeaderList, tableHeader);
-        appendElement(tableHeader, teaListTable);
+        return tableHeader;
     }
 
     function isEmpty(teas) {
