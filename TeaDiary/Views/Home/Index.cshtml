@@ -3,7 +3,28 @@
 }
 
 <div class="row">
-    <div class="col-md-8" >
+    <div class="col-md-8">
+        <div id="TeaListTitle">
+
+        </div>
+        <form class="form-horizontal">
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label>Search</label>
+                    <input type="text" id="SearchRequest" placeholder="Your search request" class="form-control" />
+                </div>
+                <div class="col-lg-3">
+                    <label>Filter</label>
+                    <select id="SearchType" class="form-control"></select>
+                </div>
+                <div class="col-lg-3">
+                    <label>
+                        <input type="checkbox" id="IsStrictSearch" class=""> Full match only
+                    </label>
+                </div>
+            </div>
+            <button class="btn btn-default" id="Search" onclick="onSearchClick()" type="button">Filter</button>
+        </form>
         <div id="TeaList">
 
         </div>
