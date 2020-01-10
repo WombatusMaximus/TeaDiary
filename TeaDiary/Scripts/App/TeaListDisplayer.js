@@ -109,8 +109,4 @@
 
         return tableHeader;
     }
-
-    function isEmpty(teas) {
-        return (teas == null || teas.length === 0);
-    }
 }

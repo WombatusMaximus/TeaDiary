@@ -192,6 +192,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\App\constants.js" />
     <Content Include="Scripts\App\Home\Index.js" />
+    <Content Include="Scripts\App\isEmpty.js" />
     <Content Include="Scripts\App\linkAttribute.js" />
     <Content Include="Scripts\App\TeaCommands.js" />
     <Content Include="Scripts\App\TeaDisplayer.js" />
