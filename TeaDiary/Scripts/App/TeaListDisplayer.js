@@ -1,10 +1,10 @@
-﻿function TeaListDisplayer(container) {
+﻿function TeaListDisplayer(containters) {
     var self = this;
-    self.container = $(container);
+    var teaListContainer = $(containters.body);
+    var teaListTitle = $(containters.title);
     var teaListTable = $("<table>");
     var teaListTableHead = $("<thead>");
     var teaListTableBody = $("<tbody>");
-    var teaListTitle = $("<h1>");
     var teaNumber = 1;
     
     self.display = (teas) => {
@@ -29,7 +29,7 @@
     }
 
     self.setupContainer = () => {
-        self.container.html("");
+        teaListContainer.html("");
         teaListTable.html("");
         teaListTableHead.html(buildTeaTableHeader());
         teaListTableBody.html("");
@@ -41,15 +41,14 @@
         teaListTable.append(teaListTableHead);
         teaListTable.append(teaListTableBody);
 
-        self.container.append(teaListTitle);
-        self.container.append(teaListTable);
+        teaListContainer.append(teaListTable);
     }
 
     function setContainerLoading(isLoading) {
         if (isLoading) {
-            self.container.hide();
+            teaListContainer.hide();
         } else {
-            self.container.show();
+            teaListContainer.show();
         }
     }
 
