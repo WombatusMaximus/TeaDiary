@@ -10,12 +10,12 @@ function documentLoaded() {
 
     $("#SearchType")
         .append($("<option>")
-            .val(SEARCT_TYPE.NAME)
-            .html("By " + SEARCT_TYPE.NAME));
+            .val(SEARCH_TYPE.NAME)
+            .html("By " + SEARCH_TYPE.NAME));
     $("#SearchType")
         .append($("<option>")
-            .val(SEARCT_TYPE.TYPE)
-            .html("By " + SEARCT_TYPE.TYPE));
+            .val(SEARCH_TYPE.TYPE)
+            .html("By " + SEARCH_TYPE.TYPE));
 
     displayer.loadAndDisplay();
 }
@@ -24,7 +24,7 @@ function onSearchClick() {
     if ($("#SearchRequest").val() === "") {
         displayer.loadAndDisplay();
     } else {
-        var search = $("#SearchType").val() === SEARCT_TYPE.NAME ? apiQueries.searchByName : apiQueries.searchByType;
+        var search = $("#SearchType").val() === SEARCH_TYPE.NAME ? apiQueries.searchByName : apiQueries.searchByType;
 
         search(
             $("#SearchRequest").val(),
