@@ -6,7 +6,7 @@
     var teaListTableHead = $("<thead>");
     var teaListTableBody = $("<tbody>");
     var nextTeaNumber = 1;
-    
+
     self.display = (teas) => {
         self.setupContainer();
         setContainerLoading(true);
@@ -77,10 +77,22 @@
             .attr('link', TEA_DETAILS_PAGE_LINK + tea.Id)
             .text(MOAR);
 
+        var teaManage = $("<td>")
+            .html("");
+        teaManage.append(
+            $("<span>")
+                .addClass("glyphicon glyphicon-remove")
+                .attr("onclick",
+                    "teaCommands.delete(" + tea.Id + ", " +
+                    "()=>$('#" + TEA_ELEMENT.PREFIX + TEA_ELEMENT.ID + tea.Id + "').hide())")
+                .css("cursor", "pointer")
+        );
+
         teaElement.append(teaNumber);
         teaElement.append(teaName);
         teaElement.append(teaType);
         teaElement.append(teaLink);
+        teaElement.append(teaManage);
         return teaElement;
     }
 
@@ -104,6 +116,9 @@
         );
         tableHeader.append(
             $("<th>").text(LINK)
+        );
+        tableHeader.append(
+            $("<th>").text(MANAGE)
         );
 
         return tableHeader;
