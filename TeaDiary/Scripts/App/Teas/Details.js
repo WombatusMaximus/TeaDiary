@@ -63,7 +63,6 @@ function onUpdateClick() {
 }
 
 function onDeleteClick() {
-    var teaCommands = new TeaCommands();
     teaCommands.delete(currentId, redirectToTeaList, showFailureMessage);
 }
 
