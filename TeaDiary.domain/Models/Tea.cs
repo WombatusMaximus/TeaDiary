@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TeaDiary.domain.Models
 {
@@ -12,5 +13,6 @@ namespace TeaDiary.domain.Models
         public string Notes { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime UpdateDate { get; set; }
+        public IList<TastingNote> TastingNotes { get; set; }
     }
 }

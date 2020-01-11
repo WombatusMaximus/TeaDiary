@@ -7,6 +7,8 @@ namespace TeaDiary.dataaccess
     {
         public DbSet<Tea> Teas { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<TastingNote> TastingNotes { get; set; }
+        public DbSet<TeaSession> TeaSessions { get; set; }
 
         public TeaDiaryContext()
             : base("DefaultConnection")
@@ -18,6 +20,8 @@ namespace TeaDiary.dataaccess
         {
             modelBuilder.Entity<Tea>().ToTable("Teas");
             modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<TastingNote>().ToTable("TastingNotes");
+            modelBuilder.Entity<TeaSession>().ToTable("TeaSessions");
         }
     }
 }

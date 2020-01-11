@@ -10,6 +10,6 @@ namespace TeaDiary.domain.Models
         public string PasswordHash { get; set; }
         public string EmailAdress { get; set; }
         public IList<Tea> Teas { get; set; }
-
+        public IList<TeaSession> Sessions { get; set; }
     }
 }
