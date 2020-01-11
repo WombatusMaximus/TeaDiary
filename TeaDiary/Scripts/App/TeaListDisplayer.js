@@ -20,6 +20,8 @@
         } else {
             teaListTable.show();
         }
+        
+        renumberTeas();
 
         setContainerLoading(false);
     }
@@ -33,8 +35,6 @@
         teaListTable.html("");
         teaListTableHead.html(buildTeaTableHeader());
         teaListTableBody.html("");
-
-        nextTeaNumber = 1;
 
         teaListTable.removeClass();
         teaListTable.addClass("table table-hover");
@@ -62,11 +62,17 @@
         teaListTitle.html(buildTitle(teas));
     }
 
-    function buildElement(tea, number) {
+    function renumberTeas() {
+        nextTeaNumber = 1;
+        var teaNumberElements = teaListTable.find("."+TEA_NUMBER);
+        $(teaNumberElements).each((index, element) => $(element).text(nextTeaNumber++));
+    }
+
+    function buildElement(tea) {
         var teaElement = $('<tr>')
             .attr("id", TEA_ELEMENT.PREFIX + TEA_ELEMENT.ID + tea.Id);
         var teaNumber = $("<td>")
-            .text(number);
+            .addClass(TEA_NUMBER);
         var teaName = $("<td>")
             .text(tea.Name);
         var teaType = $("<td>")
@@ -82,9 +88,13 @@
         teaManage.append(
             $("<span>")
                 .addClass("glyphicon glyphicon-remove")
-                .attr("onclick",
-                    "teaCommands.delete(" + tea.Id + ", " +
-                    "()=>$('#" + TEA_ELEMENT.PREFIX + TEA_ELEMENT.ID + tea.Id + "').hide())")
+                .click(()=>teaCommands.delete(
+                    tea.Id,
+                    () => {
+                        $('#' + TEA_ELEMENT.PREFIX + TEA_ELEMENT.ID + tea.Id).remove();
+                        renumberTeas();
+                    })
+                )
                 .css("cursor", "pointer")
         );
 
@@ -97,8 +107,7 @@
     }
 
     function displayTea(tea) {
-        var teaLine = buildElement(tea, nextTeaNumber);
-        nextTeaNumber++;
+        var teaLine = buildElement(tea);
         teaListTableBody.append(teaLine);
     }
 
