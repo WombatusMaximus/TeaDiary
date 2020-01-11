@@ -3,7 +3,10 @@
 var displayer;
 
 function documentLoaded() {
-    displayer = new TeaListDisplayer("#SearchResults");
+    displayer = new TeaListDisplayer({
+            title: "#SearchResultsTitle", 
+            body: "#SearchResults"
+        });
 
     $("#SearchType")
         .append($("<option>")

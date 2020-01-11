@@ -186,12 +186,17 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\App\linkAttribute.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\App\constants.js" />
+    <Content Include="Scripts\App\Home\Index.js" />
+    <Content Include="Scripts\App\isEmpty.js" />
+    <Content Include="Scripts\App\linkAttribute.js" />
     <Content Include="Scripts\App\TeaCommands.js" />
     <Content Include="Scripts\App\TeaDisplayer.js" />
+    <Content Include="Scripts\App\TeaListDisplayer.constants.js" />
     <Content Include="Scripts\App\TeaListDisplayer.js" />
     <Content Include="Scripts\App\Teas\Details.js" />
     <Content Include="Scripts\App\ApiQueries.js" />
@@ -247,7 +252,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\App\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

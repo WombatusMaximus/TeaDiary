@@ -1,16 +1,25 @@
-﻿function TeaListDisplayer(container) {
+﻿function TeaListDisplayer(containters) {
     var self = this;
-    self.container = $(container);
-
+    var teaListContainer = $(containters.body);
+    var teaListTitle = $(containters.title);
+    var teaListTable = $("<table>");
+    var teaListTableHead = $("<thead>");
+    var teaListTableBody = $("<tbody>");
+    var nextTeaNumber = 1;
+    
     self.display = (teas) => {
-        self.clearContainer();
+        self.setupContainer();
         setContainerLoading(true);
 
-        var header = buildHeader(teas);
-        appendElement(header);
-        teas.forEach((tea) => {
-            displayTea(tea);
-        });
+        displayTitle(teas);
+
+        teas.forEach(displayTea);
+
+        if (isEmpty(teas)) {
+            teaListTable.hide();
+        } else {
+            teaListTable.show();
+        }
 
         setContainerLoading(false);
     }
@@ -19,43 +28,84 @@
         apiQueries.getTeas((teas) => self.display(teas));
     }
 
-    self.clearContainer = () => {
-        self.container.html("");
+    self.setupContainer = () => {
+        teaListContainer.html("");
+        teaListTable.html("");
+        teaListTableHead.html(buildTeaTableHeader());
+        teaListTableBody.html("");
+
+        nextTeaNumber = 1;
+
+        teaListTable.removeClass();
+        teaListTable.addClass("table table-hover");
+        teaListTable.append(teaListTableHead);
+        teaListTable.append(teaListTableBody);
+
+        teaListContainer.append(teaListTable);
     }
 
     function setContainerLoading(isLoading) {
         if (isLoading) {
-            self.container.hide();
+            teaListContainer.hide();
         } else {
-            self.container.show();
+            teaListContainer.show();
         }
     }
 
-    function buildHeader(teas) {
-        if (teas != null && teas.length > 0) {
-            return $("<h1>").html(TEA_LIST_TITLE);
-        } else {
-            return $("<h1>").html(NO_TEAS_TITLE);
-        }
+    function buildTitle(teas) {
+        return isEmpty(teas)
+            ? $("<h1>").html(NO_TEAS_TITLE)
+            : $("<h1>").html(TEA_LIST_TITLE);
     }
 
-    function buildElement(tea) {
-        var teaString = $('<div>')
-            .html($("<a>")
-                .attr('href', TEA_DETAILS_PAGE_LINK + tea.Id)
-                .attr("id", TEA_ELEMENT_ID_PREFIX + tea.Id)
-                .text(tea.Name + ' (' + tea.Type + ')')
-            );
-        return teaString;
+    function displayTitle(teas) {
+        teaListTitle.html(buildTitle(teas));
     }
 
-    function appendElement(text) {
-        self.container.append(text);
+    function buildElement(tea, number) {
+        var teaElement = $('<tr>')
+            .attr("id", TEA_ELEMENT.PREFIX + TEA_ELEMENT.ID + tea.Id);
+        var teaNumber = $("<td>")
+            .text(number);
+        var teaName = $("<td>")
+            .text(tea.Name);
+        var teaType = $("<td>")
+            .text(tea.Type);
+        var teaLink = $("<td>")
+            .addClass("text-info")
+            .attr("id", TEA_ELEMENT.PREFIX + TEA_ELEMENT.LINK + tea.Id)
+            .attr('link', TEA_DETAILS_PAGE_LINK + tea.Id)
+            .text(MOAR);
+
+        teaElement.append(teaNumber);
+        teaElement.append(teaName);
+        teaElement.append(teaType);
+        teaElement.append(teaLink);
+        return teaElement;
     }
 
     function displayTea(tea) {
-        var teaLine = buildElement(tea);
-        appendElement(teaLine);
+        var teaLine = buildElement(tea, nextTeaNumber);
+        nextTeaNumber++;
+        teaListTableBody.append(teaLine);
     }
 
+    function buildTeaTableHeader(teas) {
+        var tableHeader = $("<tr>");
+
+        tableHeader.append(
+            $("<th>").text(NUMBER)
+        );
+        tableHeader.append(
+            $("<th>").text(NAME)
+        );
+        tableHeader.append(
+            $("<th>").text(TYPE)
+        );
+        tableHeader.append(
+            $("<th>").text(LINK)
+        );
+
+        return tableHeader;
+    }
 }

@@ -1,6 +1,8 @@
 ﻿$(document).ready(documentLoaded);
 
 function documentLoaded() {
-    var displayer = new TeaListDisplayer("#TeaList");
+    var displayer = new TeaListDisplayer({
+        body:"#TeaList"
+    });
     displayer.loadAndDisplay();
 }
