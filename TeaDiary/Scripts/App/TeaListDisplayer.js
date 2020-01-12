@@ -119,7 +119,7 @@
         teaManage.append(
             $("<span>")
             .addClass("glyphicon glyphicon-remove")
-            .click(() => { deleteElement(tea.Id) })
+            .click(() => deleteElement(tea.Id))
             .css("cursor", "pointer")
         );
 
