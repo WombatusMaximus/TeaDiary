@@ -5,8 +5,7 @@
     var teaListTable = $("<table>");
     var teaListTableHead = $("<thead>");
     var teaListTableBody = $("<tbody>");
-    var nextTeaNumber = 1;
-
+    
     self.display = (teas) => {
         self.setupContainer();
         setContainerLoading(true);
@@ -63,7 +62,7 @@
     }
 
     function renumberTeas() {
-        nextTeaNumber = 1;
+        var nextTeaNumber = 1;
         var teaNumberElements = teaListTable.find("."+TEA_NUMBER);
         $(teaNumberElements).each((index, element) => $(element).text(nextTeaNumber++));
     }
