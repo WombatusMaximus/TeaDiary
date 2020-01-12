@@ -7,20 +7,13 @@
     var teaListTableBody = $("<tbody>");
     
     self.display = (teas) => {
-        self.setupContainer();
         setContainerLoading(true);
 
+        self.setupContainer();
+        
         displayTitle(teas);
 
-        teas.forEach(displayTea);
-
-        if (isEmpty(teas)) {
-            teaListTable.hide();
-        } else {
-            teaListTable.show();
-        }
-        
-        renumberTeas();
+        displayTable(teas);
 
         setContainerLoading(false);
     }
@@ -61,55 +54,6 @@
         teaListTitle.html(buildTitle(teas));
     }
 
-    function renumberTeas() {
-        var nextTeaNumber = 1;
-        var teaNumberElements = teaListTable.find("."+TEA_NUMBER);
-        $(teaNumberElements).each((index, element) => $(element).text(nextTeaNumber++));
-    }
-
-    function buildElement(tea) {
-        var teaElement = $('<tr>')
-            .attr("id", TEA_ELEMENT.PREFIX + TEA_ELEMENT.ID + tea.Id);
-        var teaNumber = $("<td>")
-            .addClass(TEA_NUMBER);
-        var teaName = $("<td>")
-            .text(tea.Name);
-        var teaType = $("<td>")
-            .text(tea.Type);
-        var teaLink = $("<td>")
-            .addClass("text-info")
-            .attr("id", TEA_ELEMENT.PREFIX + TEA_ELEMENT.LINK + tea.Id)
-            .attr('link', TEA_DETAILS_PAGE_LINK + tea.Id)
-            .text(MOAR);
-
-        var teaManage = $("<td>")
-            .html("");
-        teaManage.append(
-            $("<span>")
-                .addClass("glyphicon glyphicon-remove")
-                .click(()=>teaCommands.delete(
-                    tea.Id,
-                    () => {
-                        $('#' + TEA_ELEMENT.PREFIX + TEA_ELEMENT.ID + tea.Id).remove();
-                        renumberTeas();
-                    })
-                )
-                .css("cursor", "pointer")
-        );
-
-        teaElement.append(teaNumber);
-        teaElement.append(teaName);
-        teaElement.append(teaType);
-        teaElement.append(teaLink);
-        teaElement.append(teaManage);
-        return teaElement;
-    }
-
-    function displayTea(tea) {
-        var teaLine = buildElement(tea);
-        teaListTableBody.append(teaLine);
-    }
-
     function buildTeaTableHeader(teas) {
         var tableHeader = $("<tr>");
 
@@ -130,5 +74,79 @@
         );
 
         return tableHeader;
+    }
+
+    function displayTable(teas) {
+        teas.forEach(displayTea);
+
+        renumberTeas();
+
+        if (isEmpty(teas)) {
+            teaListTable.hide();
+        } else {
+            teaListTable.show();
+        }
+    }
+
+    function renumberTeas() {
+        var nextTeaNumber = 1;
+        var teaNumberElements = teaListTable.find("."+TEA_NUMBER);
+        $(teaNumberElements).each((index, element) => $(element).text(nextTeaNumber++));
+    }
+
+    function displayTea(tea) {
+        var teaLine = buildElement(tea);
+        teaListTableBody.append(teaLine);
+    }
+
+    function buildElement(tea) {
+        var teaElement = $('<tr>')
+            .attr("id", buildId(tea.Id));
+        var teaNumber = $("<td>")
+            .addClass(TEA_NUMBER);
+        var teaName = $("<td>")
+            .text(tea.Name);
+        var teaType = $("<td>")
+            .text(tea.Type);
+        var teaLink = $("<td>")
+            .addClass("text-info")
+            .attr("id", buildId(tea.Id,"link"))
+            .attr('link', TEA_DETAILS_PAGE_LINK + tea.Id)
+            .text(MOAR);
+
+        var teaManage = $("<td>")
+            .html("");
+        teaManage.append(
+            $("<span>")
+            .addClass("glyphicon glyphicon-remove")
+            .click(() => { deleteElement(tea.Id) })
+            .css("cursor", "pointer")
+        );
+
+        teaElement.append(teaNumber);
+        teaElement.append(teaName);
+        teaElement.append(teaType);
+        teaElement.append(teaLink);
+        teaElement.append(teaManage);
+        return teaElement;
+    }
+
+    function deleteElement(teaId) {
+        teaCommands.delete(
+            teaId,
+            () => {
+                $('#' + buildId(teaId)).remove();
+                renumberTeas();
+            });
+    }
+
+    function buildId(teaId, type) {
+        var id = TEA_ELEMENT.PREFIX;
+        switch (type) {
+            case "link":
+                return id + TEA_ELEMENT.LINK + teaId;
+            default:
+                return id + TEA_ELEMENT.ID + teaId;
+        }
     }
 }
