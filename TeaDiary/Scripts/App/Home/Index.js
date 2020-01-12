@@ -1,12 +1,14 @@
 ﻿$(document).ready(documentLoaded);
 
-var displayer;
+var teaDisplayer;
+var teaSessionDisplayer;
 
 function documentLoaded() {
-    displayer = new TeaListDisplayer({
+    teaDisplayer = new TeaListDisplayer({
         title: "#TeaListTitle",
         body: "#TeaList"
     });
+    teaSessionDisplayer = new TeaSessionListDisplayer("#TeaSessionList");
 
     $("#SearchType")
         .append($("<option>")
@@ -17,19 +19,20 @@ function documentLoaded() {
             .val(SEARCT_TYPE.TYPE)
             .html("By " + SEARCT_TYPE.TYPE));
 
-    displayer.loadAndDisplay();
+    teaDisplayer.loadAndDisplay();
+    teaSessionDisplayer.loadAndDisplay();
 }
 
 function onSearchClick() {
     if ($("#SearchRequest").val() === "") {
-        displayer.loadAndDisplay();
+        teaDisplayer.loadAndDisplay();
     } else {
         var search = $("#SearchType").val() === SEARCT_TYPE.NAME ? apiQueries.searchByName : apiQueries.searchByType;
 
         search(
             $("#SearchRequest").val(),
             $("#IsStrictSearch").prop("checked"),
-            (teaList) => displayer.display(teaList)
+            (teaList) => teaDisplayer.display(teaList)
         );
     }
 }

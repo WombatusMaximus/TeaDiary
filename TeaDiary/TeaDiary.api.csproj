@@ -174,6 +174,7 @@
     <Compile Include="Api_Controllers\TeaController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TeasController.cs" />
+    <Compile Include="Controllers\TeaSessionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,6 +198,8 @@
     <Content Include="Scripts\App\linkAttribute.js" />
     <Content Include="Scripts\App\TeaCommands.js" />
     <Content Include="Scripts\App\TeaDisplayer.js" />
+    <Content Include="Scripts\App\TeaSessionListDisplayer.js" />
+    <Content Include="Scripts\App\TeaSessionListDisplayer.constants.js" />
     <Content Include="Scripts\App\TeaListDisplayer.constants.js" />
     <Content Include="Scripts\App\TeaListDisplayer.js" />
     <Content Include="Scripts\App\Teas\Details.js" />
@@ -250,6 +253,8 @@
     <Content Include="Views\Teas\Index.cshtml" />
     <Content Include="Views\Teas\Details.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\TeaSessions\Index.cshtml" />
+    <Content Include="Views\TeaSessions\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
