@@ -4,6 +4,8 @@ const NUMBER = "#";
 const NAME = "Name";
 const TYPE = "Type";
 const LINK = "Details";
+const MANAGE = "Actions";
+const TEA_NUMBER = "TeaNumber";
 
 const TEA_LIST_TITLE = "Your tea list:";
 const NO_TEAS_TITLE = "No teas were found :(";
