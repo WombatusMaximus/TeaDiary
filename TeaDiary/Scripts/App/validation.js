@@ -13,3 +13,11 @@
 
     return true;
 }
+
+function isTeaSessionValid(teaSession) {
+    if (teaSession == null) {
+        return false;
+    }
+    
+    return true;
+}
