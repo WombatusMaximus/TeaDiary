@@ -39,4 +39,24 @@
             }
         );
     }
+
+    self.getTeaSessions = (successCallback, errorCallback) => {
+        $.ajax("/api/teaSession",
+            {
+                method: 'GET',
+                error: errorCallback,
+                success: (teaSessions) => successCallback(teaSessions)
+            }
+        );
+    }
+
+    self.getTeaSession = (id, successCallback, errorCallback) => {
+        $.ajax("/api/teaSession/"+id,
+            {
+                method: 'GET',
+                error: errorCallback,
+                success: (teaSession) => successCallback(teaSession)
+            }
+        );
+    }
 }
