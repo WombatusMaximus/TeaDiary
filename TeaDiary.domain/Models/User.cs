@@ -8,7 +8,7 @@ namespace TeaDiary.domain.Models
         //coming soon
         public string Name { get; set; }
         public string PasswordHash { get; set; }
-        public string EmailAdress { get; set; }
+        public string EmailAddress { get; set; }
         public IList<Tea> Teas { get; set; }
         public IList<TeaSession> Sessions { get; set; }
     }

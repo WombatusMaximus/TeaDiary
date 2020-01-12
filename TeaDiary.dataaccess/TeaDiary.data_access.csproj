@@ -55,9 +55,9 @@
     <Compile Include="Migrations\201912202323411_initial.designer.cs">
       <DependentUpon>201912202323411_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001112124485_teaSessions.cs" />
-    <Compile Include="Migrations\202001112124485_teaSessions.designer.cs">
-      <DependentUpon>202001112124485_teaSessions.cs</DependentUpon>
+    <Compile Include="Migrations\202001121733143_TeaSessions.cs" />
+    <Compile Include="Migrations\202001121733143_TeaSessions.designer.cs">
+      <DependentUpon>202001121733143_TeaSessions.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,8 +82,8 @@
     <EmbeddedResource Include="Migrations\201912202323411_initial.resx">
       <DependentUpon>201912202323411_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001112124485_teaSessions.resx">
-      <DependentUpon>202001112124485_teaSessions.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001121733143_TeaSessions.resx">
+      <DependentUpon>202001121733143_TeaSessions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

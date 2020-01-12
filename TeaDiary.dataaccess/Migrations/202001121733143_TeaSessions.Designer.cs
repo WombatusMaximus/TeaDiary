@@ -7,13 +7,13 @@ namespace TeaDiary.dataaccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class teaSessions : IMigrationMetadata
+    public sealed partial class TeaSessions : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(teaSessions));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(TeaSessions));
         
         string IMigrationMetadata.Id
         {
-            get { return "202001112124485_teaSessions"; }
+            get { return "202001121733143_TeaSessions"; }
         }
         
         string IMigrationMetadata.Source

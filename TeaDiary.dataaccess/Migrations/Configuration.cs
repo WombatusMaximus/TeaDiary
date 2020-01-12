@@ -1,4 +1,5 @@
-﻿using TeaDiary.domain.Models;
+﻿using System.Collections.Generic;
+using TeaDiary.domain.Models;
 
 namespace TeaDiary.dataaccess.Migrations
 {
@@ -25,50 +26,25 @@ namespace TeaDiary.dataaccess.Migrations
                 Id=1,
                 Name = "Tea lover",
                 PasswordHash = "1234567890",
-                EmailAdress = "some@email.adress",
+                EmailAddress = "some@email.address",
             };
 
             context.Users.AddOrUpdate(initialUser);
             context.SaveChanges();
-            
-            var initialTeas = new[]
+
+            var initialTeaSession = new TeaSession
             {
-                new Tea
-                {
-                    Id = 1,
-                    UserId = initialUser.Id.GetValueOrDefault(),
-                    Name = "Цзуй Гуй Фей",
-                    AdditionalName = "Пьяная любовница императора",
-                    Type = "Темный улун",
-                    Notes = "Классный чай. Рекомендую. Пить в чайной паре",
-                    CreationDate = new DateTime(2019,1,1),
-                    UpdateDate = new DateTime(2019,1,1)
-                },
-                new Tea
-                {
-                    Id=2,
-                    UserId = initialUser.Id.GetValueOrDefault(),
-                    Name = "Дянь Хун Да Дзинь Я",
-                    AdditionalName = "Большая золотая почка из Фэнцина",
-                    Type = "Красный",
-                    Notes = "Классный чай. Рекомендую",
-                    CreationDate = new DateTime(2019,1,1),
-                    UpdateDate = new DateTime(2019,1,1)
-                },
-                new Tea
-                {
-                    Id=3,
-                    UserId = initialUser.Id.GetValueOrDefault(),
-                    Name = "Трындец",
-                    AdditionalName = "Полный трындец",
-                    Type = "Молочный шен пуэр",
-                    Notes = "Сделан из шена 80-летней выдержки и ириски",
-                    CreationDate = new DateTime(2019,1,1),
-                    UpdateDate = new DateTime(2019,1,1)
-                }
+                Id = 1,
+                User = null,
+                UserId = 1,
+                Date = new DateTime(2020, 1, 1),
+                Duration = new TimeSpan(2, 0, 0),
+                Participants = new List<string> { "Биба", "Боба" },
+                Notes = "Чёт пили. Было вкусно",
+                Teas = null
             };
 
-            context.Teas.AddOrUpdate(initialTeas);
+            context.TeaSessions.AddOrUpdate(initialTeaSession);
             context.SaveChanges();
         }
     }
