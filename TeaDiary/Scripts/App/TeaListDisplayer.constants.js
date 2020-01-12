@@ -4,7 +4,7 @@ const NUMBER = "#";
 const NAME = "Name";
 const TYPE = "Type";
 const LINK = "Details";
-const MANAGE = "Manage";
+const MANAGE = "Actions";
 const TEA_NUMBER = "TeaNumber";
 
 const TEA_LIST_TITLE = "Your tea list:";
