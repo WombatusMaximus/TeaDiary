@@ -108,9 +108,11 @@
 
     function buildDate(date) {
         var dateConverted = new Date(date);
-        var dateStringRepresentation =
-            dateConverted.getDate() + "." + (dateConverted.getMonth() + 1) + "." + dateConverted.getFullYear();
-        
+
+        var dateFormat = { year: "numeric", month: "2-digit", day: "2-digit" };
+
+        var dateStringRepresentation = dateConverted.toLocaleDateString(undefined, dateFormat);
+
         return dateStringRepresentation;
     }
 
