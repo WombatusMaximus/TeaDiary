@@ -4,7 +4,8 @@ const TEA_SESSION_TABLE_HEAD = {
     NUMBER: "#",
     DATE: "Date",
     DETAILS: "Details",
-    MANAGE: "Actions"
+    MANAGE: "Actions",
+    TEXT: "Description"
 }
 
 const TEA_SESSION_ELEMENT = {

@@ -14,8 +14,6 @@
 
         teaSessionsSorted.forEach(displayTeaSession);
 
-        renumberTeaSessions();
-
         if (isEmpty(teaSessionsSorted)) {
             table.hide();
         } else {
@@ -55,10 +53,10 @@
         var tableHeader = $("<tr>");
 
         tableHeader.append(
-            $("<th>").text(TEA_SESSION_TABLE_HEAD.NUMBER)
+            $("<th>").text(TEA_SESSION_TABLE_HEAD.DATE)
         );
         tableHeader.append(
-            $("<th>").text(TEA_SESSION_TABLE_HEAD.DATE)
+            $("<th>").text(TEA_SESSION_TABLE_HEAD.TEXT)
         );
         tableHeader.append(
             $("<th>").text(TEA_SESSION_TABLE_HEAD.DETAILS)
@@ -70,12 +68,6 @@
         return tableHeader;
     }
 
-    function renumberTeaSessions() {
-        var nextTeaSessionNumber = 1;
-        var teaSessionNumberElements = table.find("." + TEA_SESSION_NUMBER);
-        $(teaSessionNumberElements).each((index, element) => $(element).text(nextTeaSessionNumber++));
-    }
-
     function displayTeaSession(teaSession) {
         var teaSessionLine = buildElement(teaSession);
         tableBody.append(teaSessionLine);
@@ -84,10 +76,14 @@
     function buildElement(teaSession) {
         var teaSessionElement = $('<tr>')
             .attr("id", buildId(teaSession.Id));
-        var teaSessionNumber = $("<td>")
-            .addClass(TEA_SESSION_NUMBER);
         var teaSessionDate = $("<td>")
             .text(buildDate(teaSession.Date));
+        var teaSessionText = $("<td>")
+            .text(
+                teaSession.Notes.length < 50
+                    ? teaSession.Notes
+                    : (teaSession.Notes.slice(0, 47) + "...")
+            );
         var teaSessionLink = $("<td>")
             .addClass("text-info")
             .attr("id", buildId(teaSession.Id, "link"))
@@ -103,8 +99,8 @@
                 .css("cursor", "pointer")
         );
 
-        teaSessionElement.append(teaSessionNumber);
         teaSessionElement.append(teaSessionDate);
+        teaSessionElement.append(teaSessionText);
         teaSessionElement.append(teaSessionLink);
         teaSessionElement.append(teaSessionManage);
         return teaSessionElement;
