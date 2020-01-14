@@ -18,7 +18,7 @@ namespace TeaDiary.Api_Controllers
                 Id = 1,
                 User = null,
                 UserId = 1,
-                Date = new DateTime(2020,1,1),
+                Date = new DateTime(2019,1,1),
                 Duration = new TimeSpan(2,0,0),
                 Participants = new List<string>
                 {

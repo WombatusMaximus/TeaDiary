@@ -10,11 +10,13 @@
 
         self.setupContainer();
 
-        teaSessions.forEach(displayTeaSession);
+        var teaSessionsSorted = teaSessions.sort((first, second) => first.Date > second.Date ? -1 : 1);
+
+        teaSessionsSorted.forEach(displayTeaSession);
 
         renumberTeaSessions();
 
-        if (isEmpty(teaSessions)) {
+        if (isEmpty(teaSessionsSorted)) {
             table.hide();
         } else {
             table.show();
