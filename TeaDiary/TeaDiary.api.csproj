@@ -196,6 +196,7 @@
     <Content Include="Scripts\App\Home\Index.js" />
     <Content Include="Scripts\App\isEmpty.js" />
     <Content Include="Scripts\App\linkAttribute.js" />
+    <Content Include="Scripts\App\sort.js" />
     <Content Include="Scripts\App\TeaCommands.js" />
     <Content Include="Scripts\App\TeaDisplayer.js" />
     <Content Include="Scripts\App\TeaSessionListDisplayer.js" />
