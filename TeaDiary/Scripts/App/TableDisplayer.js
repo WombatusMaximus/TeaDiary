@@ -12,23 +12,22 @@
             .attr("id",getRowId(data[params.idKey]));
 
         if (params.numbered) {
-            var numberElement = $("<th>")
+            var numberElement = $("<td>")
                 .addClass(TABLE_DISPLAYER_NUMBER_COLUMN_CLASS);
             row.append(numberElement);
         }
 
         if (!isEmpty(params.columns)) {
             params.columns.forEach((column) => {
-                var cellElement = $("<th>")
+                var cellElement = $("<td>")
                     .text(data[column.key])
                     .attr("id",getCellId(data[params.idKey], column.key));
                 row.append(cellElement);
             });
         }
-
         
         if (!isEmpty(params.actions)) {
-            var actions = $("<th>");
+            var actions = $("<td>");
             params.actions.forEach((action) => {
                 var actionElement = $('<span>')
                     .addClass("glyphicon")
@@ -47,7 +46,6 @@
             row.append(actions);
         }
         
-
         body.append(row);
 
         renumberColumns();
