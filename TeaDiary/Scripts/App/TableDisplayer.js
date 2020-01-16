@@ -104,11 +104,7 @@
     }
 
     function getDefaults() {
-        var defaults = {};
-        defaults.name = "AmazinglyCoolBrandTableSubscribePlz";
-        defaults.numbered = true;
-        defaults.idKey = "id";
-        return defaults;
+        return TABLE_DISPLAYER_DEFAULT_PARAMETERS;
     }
 
     function setTableLoading(loading) {
