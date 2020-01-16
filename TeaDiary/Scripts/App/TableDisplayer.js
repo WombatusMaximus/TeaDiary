@@ -64,8 +64,8 @@
         setTableLoading(false);
     }
 
-    self.deleteRow = (row) => {
-        //deletion
+    self.deleteRow = (rowId) => {
+        body.find("#" + rowId).remove();
         renumberColumns();
     }
 
