@@ -29,23 +29,7 @@
 
         if (!isEmpty(params.actions)) {
             var actions = $("<td>");
-            params.actions.forEach((action) => {
-                var actionElement = $('<span>')
-                    .addClass("glyphicon")
-                    .addClass(action.icon)
-                    .css("cursor", "pointer")
-                    .click(() => onActionClick(action.action,
-                        {
-                            id: data[params.idKey],
-                            rowId: getRowId(data[params.idKey]),
-                            tableId: getTableId()
-                        }));
-                if (!(action.hint == null))
-                    actionElement.attr("title", action.hint);
-                if (!(action.text == null))
-                    actionElement.text(action.text);
-                actions.append(actionElement);
-            });
+            params.actions.forEach((action) => actions.append(getActionElement(action)));
             row.append(actions);
         }
 
@@ -83,6 +67,24 @@
     self.hide = () => {
         display = false;
         table.hide();
+    }
+
+    function getActionElement(action) {
+        var actionElement = $('<span>')
+            .addClass("glyphicon")
+            .addClass(action.icon)
+            .css("cursor", "pointer")
+            .click(() => onActionClick(action.action,
+                {
+                    id: data[params.idKey],
+                    rowId: getRowId(data[params.idKey]),
+                    tableId: getTableId()
+                }));
+        if (!(action.hint == null))
+            actionElement.attr("title", action.hint);
+        if (!(action.text == null))
+            actionElement.text(action.text);
+        return actionElement;
     }
 
     function onActionClick(action, source) {
@@ -165,7 +167,7 @@
     }
 
     function getCellId(row, column) {
-        return getRowId() + "_column_" + column;
+        return getRowId(row) + "_column_" + column;
     }
 
     function getTableId() {
