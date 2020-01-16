@@ -5,5 +5,6 @@ const TABLE_DISPLAYER_NUMBER_COLUMN_CLASS = "NumberColumn";
 const TABLE_DISPLAYER_DEFAULT_PARAMETERS = {
     name: "AmazinglyCoolBrandTableSubscribePlz",
     numbered: true,
-    idKey: "id"
+    idKey: "id",
+    noItems: "Sorry, there are no items yet"
 }

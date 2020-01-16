@@ -4,12 +4,13 @@
     var table = $("<table>");
     var header = $("<thead>");
     var body = $("<tbody>");
+    var noItemsMessage = $("<div>");
     var params = Object.assign({}, getDefaults(), parameters);
     var display = true;
-    
+
     self.addRow = (data) => {
         var row = $("<tr>")
-            .attr("id",getRowId(data[params.idKey]));
+            .attr("id", getRowId(data[params.idKey]));
 
         if (params.numbered) {
             var numberElement = $("<td>")
@@ -21,11 +22,11 @@
             params.columns.forEach((column) => {
                 var cellElement = $("<td>")
                     .text(data[column.key])
-                    .attr("id",getCellId(data[params.idKey], column.key));
+                    .attr("id", getCellId(data[params.idKey], column.key));
                 row.append(cellElement);
             });
         }
-        
+
         if (!isEmpty(params.actions)) {
             var actions = $("<td>");
             params.actions.forEach((action) => {
@@ -47,10 +48,12 @@
             });
             row.append(actions);
         }
-        
+
         body.append(row);
 
         renumberColumns();
+
+        updateNoItemsMessageDisplay();
     }
 
     self.displayList = (data) => {
@@ -61,12 +64,15 @@
             data.forEach((row) => self.addRow(row));
 
         renumberColumns();
+        updateNoItemsMessageDisplay();
+
         setTableLoading(false);
     }
 
     self.deleteRow = (rowId) => {
         body.find("#" + rowId).remove();
         renumberColumns();
+        updateNoItemsMessageDisplay();
     }
 
     self.show = () => {
@@ -91,13 +97,17 @@
 
         table.removeClass();
         table.addClass("table table-hover");
+        table.attr("id", getTableId());
 
         table.html("");
         table.append(header);
+        table.append(noItemsMessage);
         table.append(body);
 
         header.html(getHeader());
-        
+
+        noItemsMessage.append(params.noItems);
+
         self.displayList(params.data);
 
         setTableLoading(false);
@@ -151,15 +161,26 @@
     }
 
     function getRowId(row) {
-        return "table_"+params.name + "_row_"+row;
+        return getTableId() + "_row_" + row;
     }
 
     function getCellId(row, column) {
-        return "table_" + params.name + "_row_" + row + "_column_" + column;
+        return getRowId() + "_column_" + column;
     }
 
     function getTableId() {
+        if (params.name === TABLE_DISPLAYER_DEFAULT_PARAMETERS.name)
+            console.warn("Default table name was chosen");
         return "table_" + params.name;
+    }
+
+    function updateNoItemsMessageDisplay(clear) {
+        var rows = body.find("tr");
+        if (rows.length === 0) {
+            noItemsMessage.show();
+        } else {
+            noItemsMessage.hide();
+        }
     }
 
     initialise();
