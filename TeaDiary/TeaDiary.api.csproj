@@ -198,10 +198,11 @@
     <Content Include="Scripts\App\linkAttribute.js" />
     <Content Include="Scripts\App\TeaCommands.js" />
     <Content Include="Scripts\App\TeaDisplayer.js" />
-    <Content Include="Scripts\App\TeaSessionListDisplayer.js" />
-    <Content Include="Scripts\App\TeaSessionListDisplayer.constants.js" />
     <Content Include="Scripts\App\TeaListDisplayer.constants.js" />
     <Content Include="Scripts\App\TeaListDisplayer.js" />
+    <Content Include="Scripts\App\TeaSession\TeaSessionCommands.js" />
+    <Content Include="Scripts\App\TeaSession\TeaSessionListDisplayer.constants.js" />
+    <Content Include="Scripts\App\TeaSession\TeaSessionListDisplayer.js" />
     <Content Include="Scripts\App\Teas\Details.js" />
     <Content Include="Scripts\App\ApiQueries.js" />
     <Content Include="Scripts\App\Teas\Index.js" />
