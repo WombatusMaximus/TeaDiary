@@ -41,6 +41,8 @@
                         }));
                 if (!(action.hint == null))
                     actionElement.attr("title", action.hint);
+                if (!(action.text == null))
+                    actionElement.text(action.text);
                 actions.append(actionElement);
             });
             row.append(actions);
