@@ -1,108 +1,62 @@
 ﻿function TeaSessionListDisplayer(container) {
     var self = this;
-    var teaSessionsList = $(container);
-    var table = $("<table>");
-    var tableHead = $("<thead>");
-    var tableBody = $("<tbody>");
-
+    var displayer = new TableDisplayer(container,
+        {
+            numbered: false,
+            name: "TeaSessionList",
+            columns: getHeader(),
+            actions: [
+                {
+                    text: "More...",
+                    action: (element) => redirectToTeaSession(element)
+                },
+                {
+                    icon: "glyphicon-remove",
+                    hint: "Delete",
+                    action: (element) => deleteElement(element)
+                }
+            ]
+        });
+    var commands = new TeaSessionCommands();
+    
     self.display = (teaSessions) => {
-        setContainerLoading(true);
-
-        self.setupContainer();
-
         var teaSessionsSorted = teaSessions.sort((first, second) => first.Date > second.Date ? -1 : 1);
 
         teaSessionsSorted.forEach(displayTeaSession);
-
-        if (isEmpty(teaSessionsSorted)) {
-            table.hide();
-        } else {
-            table.show();
-        }
-
-        setContainerLoading(false);
     }
 
     self.loadAndDisplay = () => {
         apiQueries.getTeaSessions((teaSessions) => self.display(teaSessions));
     }
 
-    self.setupContainer = () => {
-        teaSessionsList.html("");
-        table.html("");
-        tableHead.html(buildHeader());
-        tableBody.html("");
-
-        table.removeClass();
-        table.addClass("table table-hover");
-        table.append(tableHead);
-        table.append(tableBody);
-
-        teaSessionsList.append(table);
-    }
-
-    function setContainerLoading(isLoading) {
-        if (isLoading) {
-            teaSessionsList.hide();
-        } else {
-            teaSessionsList.show();
-        }
-    }
-
-    function buildHeader() {
-        var tableHeader = $("<tr>");
-
-        tableHeader.append(
-            $("<th>").text(TEA_SESSION_TABLE_HEAD.DATE)
-        );
-        tableHeader.append(
-            $("<th>").text(TEA_SESSION_TABLE_HEAD.TEXT)
-        );
-        tableHeader.append(
-            $("<th>").text(TEA_SESSION_TABLE_HEAD.DETAILS)
-        );
-        tableHeader.append(
-            $("<th>").text(TEA_SESSION_TABLE_HEAD.MANAGE)
-        );
+    function getHeader() {
+        var tableHeader = [
+            {
+                header: TEA_SESSION_TABLE_HEAD.DATE,
+                key: "date"
+            },
+            {
+                header: TEA_SESSION_TABLE_HEAD.TEXT,
+                key: "description"
+            }
+        ];
 
         return tableHeader;
     }
 
     function displayTeaSession(teaSession) {
-        var teaSessionLine = buildElement(teaSession);
-        tableBody.append(teaSessionLine);
+        displayer.addRow(buildElement(teaSession));
     }
 
     function buildElement(teaSession) {
-        var teaSessionElement = $('<tr>')
-            .attr("id", buildId(teaSession.Id));
-        var teaSessionDate = $("<td>")
-            .text(buildDate(teaSession.Date));
-        var teaSessionText = $("<td>")
-            .text(
-                teaSession.Notes.length < 50
-                    ? teaSession.Notes
-                    : (teaSession.Notes.slice(0, 47) + "...")
-            );
-        var teaSessionLink = $("<td>")
-            .addClass("text-info")
-            .attr("id", buildId(teaSession.Id, "link"))
-            .attr('link', TEA_SESSION_DETAILS_PAGE_LINK + teaSession.Id)
-            .text(MOAR);
+        var teaSessionElement = {
+            id: teaSession.Id,
+            date: buildDate(teaSession.Date),
+            description: teaSession.Notes.length < 50
+                ? teaSession.Notes
+                : (teaSession.Notes.slice(0, 47) + "...")
+        };
 
-        var teaSessionManage = $("<td>")
-            .html("");
-        teaSessionManage.append(
-            $("<span>")
-                .addClass("glyphicon glyphicon-remove")
-                .click(() => deleteElement(teaSession.Id))
-                .css("cursor", "pointer")
-        );
-
-        teaSessionElement.append(teaSessionDate);
-        teaSessionElement.append(teaSessionText);
-        teaSessionElement.append(teaSessionLink);
-        teaSessionElement.append(teaSessionManage);
         return teaSessionElement;
     }
 
@@ -116,17 +70,13 @@
         return dateStringRepresentation;
     }
 
-    function deleteElement(teaSessionId) {
-        
+    function deleteElement(element) {
+        commands.delete(
+            element.id,
+            () => displayer.deleteRow(element.rowId));
     }
 
-    function buildId(teaSessionId, type) {
-        var id = TEA_SESSION_ELEMENT.PREFIX;
-        switch (type) {
-            case "link":
-                return id + TEA_SESSION_ELEMENT.LINK + teaSessionId;
-            default:
-                return id + TEA_SESSION_ELEMENT.ID + teaSessionId;
-        }
+    function redirectToTeaSession(element) {
+        $(location).attr('href', TEA_SESSION_DETAILS_PAGE_LINK + element.id);
     }
 }
