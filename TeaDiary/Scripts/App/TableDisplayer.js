@@ -29,7 +29,7 @@
 
         if (!isEmpty(params.actions)) {
             var actions = $("<td>");
-            params.actions.forEach((action) => actions.append(getActionElement(action)));
+            params.actions.forEach((action) => actions.append(getActionElement(action, data)));
             row.append(actions);
         }
 
@@ -69,7 +69,7 @@
         table.hide();
     }
 
-    function getActionElement(action) {
+    function getActionElement(action, data) {
         var actionElement = $('<span>')
             .addClass("glyphicon")
             .addClass(action.icon)
